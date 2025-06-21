@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %} - Notemaker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            Notemaker
+        </div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('home') }}"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#"><i class="fas fa-question-circle"></i> About</a></li>
+        </ul>
+        <ul class="login-btn">
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+        </ul>
+    </nav>
+
+    <main class="auth-section">
+        <div class="auth-container">
+            <div class="auth-info-panel">
+                <div class="info-content">
+                    <h2>Notemaker</h2>
+                    <p class="tagline">Your Ideas. Organized. Anywhere. Anytime.</p>
+                </div>
+            </div>
+
+            <div class="auth-form-panel">
+                {% block form_content %}{% endblock %}
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>
