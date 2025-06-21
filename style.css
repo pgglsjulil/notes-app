@@ -1,3 +1,4 @@
+/* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -13,6 +14,7 @@ body {
     position: relative;
 }
 
+/* Background Pattern */
 body::before {
     content: '';
     position: fixed;
@@ -26,7 +28,7 @@ body::before {
     z-index: 0;
 }
 
-/* Navigation */
+/* Navigation Styles */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -40,6 +42,7 @@ body::before {
     font-size: 24px;
     font-weight: bold;
     color: #f39c12;
+    line-height: 1.2;
 }
 
 .nav-links {
@@ -55,9 +58,11 @@ body::before {
     align-items: center;
     gap: 8px;
     transition: color 0.3s ease;
+    cursor: pointer;
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a.active {
     color: #f39c12;
 }
 
@@ -76,21 +81,22 @@ body::before {
     transition: color 0.3s ease;
 }
 
-.login-btn a:hover{
+.login-btn a:hover {
     color: #f39c12;
 }
 
-/* Hero Section */
+/* Hero Section (Home Page) */
 .hero {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 240px 40px 60px 10px;
+    padding: 240px 40px 60px;
     max-width: 1200px;
-    margin: 40px auto 0 auto;
+    margin: 0 auto;
     position: relative;
     z-index: 5;
     flex-direction: row-reverse;
+    gap: 60px;
 }
 
 .hero-content {
@@ -113,7 +119,7 @@ body::before {
     line-height: 1.6;
 }
 
-/* Illustration */
+/* Hero Illustration */
 .hero-illustration {
     flex: 1;
     display: flex;
@@ -124,7 +130,7 @@ body::before {
 
 .laptop-container {
     position: relative;
-    transform: perspective(000px) rotateY(-15deg) rotateX(5deg);
+    transform: perspective(1000px) rotateY(-15deg) rotateX(5deg);
     animation: float 6s ease-in-out infinite;
 }
 
@@ -212,7 +218,7 @@ body::before {
     border-radius: 0 0 10px 10px;
 }
 
-/* Hand with pen */
+/* Hand with pen illustration */
 .hand {
     position: absolute;
     right: -50px;
@@ -254,13 +260,222 @@ body::before {
     border-radius: 3px;
 }
 
-/* Floating elements */
+/* About Section */
+.about-section {
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    padding: 140px 100px 60px;
+    max-width: 1500px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 5;
+    gap: 60px;
+}
+
+.about-content {
+    flex: 1;
+    max-width: 2000px;
+}
+
+.about-content h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #f39c12;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.about-content p {
+    font-size: 1.1rem;
+    color: #bdc3c7;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.get-started-btn {
+    display: inline-block;
+    background: #f39c12;
+    color: #2c3e50;
+    padding: 12px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.get-started-btn:hover {
+    background: #e67e22;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
+}
+
+/* About Page Illustration */
+.about-illustration {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    min-height: 400px;
+}
+
+.illustration-container {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Notepad/Shield Background */
+.notepad-shield {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-5deg);
+    width: 200px;
+    height: 250px;
+    background: linear-gradient(145deg, #3498db, #2980b9);
+    border-radius: 15px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    z-index: 2;
+}
+
+.notepad-shield::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    background: white;
+    border-radius: 10px;
+    z-index: 3;
+}
+
+/* Content lines on notepad */
+.notepad-content {
+    position: absolute;
+    top: 30px;
+    left: 25px;
+    right: 25px;
+    z-index: 4;
+}
+
+.note-line {
+    height: 8px;
+    background: #ddd;
+    margin-bottom: 8px;
+    border-radius: 4px;
+}
+
+.note-line:nth-child(1) { width: 80%; background: #f39c12; }
+.note-line:nth-child(2) { width: 60%; }
+.note-line:nth-child(3) { width: 90%; }
+.note-line:nth-child(4) { width: 70%; }
+
+.checkmarks {
+    position: absolute;
+    top: 30px;
+    left: 15px;
+    z-index: 5;
+}
+
+.checkmark {
+    width: 12px;
+    height: 12px;
+    background: #27ae60;
+    border-radius: 50%;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.checkmark::after {
+    content: '✓';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 8px;
+    font-weight: bold;
+}
+
+/* Character/Person */
+.character {
+    position: absolute;
+    top: 50%;
+    right: -30px;
+    transform: translateY(-50%);
+    width: 80px;
+    height: 120px;
+    z-index: 6;
+}
+
+.character-body {
+    width: 50px;
+    height: 70px;
+    background: #e74c3c;
+    border-radius: 25px 25px 10px 10px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.character-head {
+    width: 35px;
+    height: 35px;
+    background: #fdbcb4;
+    border-radius: 50%;
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.character-arm {
+    position: absolute;
+    width: 30px;
+    height: 12px;
+    background: #fdbcb4;
+    border-radius: 6px;
+    top: 15px;
+    right: -25px;
+    transform: rotate(-20deg);
+}
+
+.pencil {
+    position: absolute;
+    width: 6px;
+    height: 40px;
+    background: linear-gradient(to bottom, #f39c12, #e67e22);
+    border-radius: 3px;
+    right: -35px;
+    top: 10px;
+    transform: rotate(15deg);
+}
+
+.pencil::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 8px;
+    background: #2c3e50;
+    border-radius: 2px;
+}
+
+/* Floating Elements */
 .floating-element {
     position: absolute;
     opacity: 0.6;
     animation: floatAround 8s ease-in-out infinite;
 }
 
+/* Hero floating elements */
 .plus {
     color: #f39c12;
     font-size: 20px;
@@ -282,42 +497,139 @@ body::before {
     border-radius: 50%;
 }
 
+/* About floating elements */
+.gear {
+    width: 25px;
+    height: 25px;
+    background: #95a5a6;
+    border-radius: 50%;
+    position: relative;
+}
+
+.gear::before {
+    content: '⚙';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #34495e;
+    font-size: 16px;
+}
+
+.lightbulb {
+    width: 20px;
+    height: 25px;
+    background: #f1c40f;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    position: relative;
+}
+
+.lightbulb::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 6px;
+    background: #95a5a6;
+    border-radius: 0 0 6px 6px;
+}
+
+.document {
+    width: 20px;
+    height: 25px;
+    background: white;
+    border-radius: 2px;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.document::before {
+    content: '';
+    position: absolute;
+    top: 4px;
+    left: 3px;
+    right: 3px;
+    height: 2px;
+    background: #bdc3c7;
+}
+
+.document::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 3px;
+    right: 6px;
+    height: 2px;
+    background: #bdc3c7;
+}
+
 /* Floating element positions */
-.floating-element:nth-child(1) { top: 10%; left: 10%; animation-delay: 0s; }
-.floating-element:nth-child(2) { top: 20%; right: 15%; animation-delay: 1s; }
-.floating-element:nth-child(3) { bottom: 30%; left: 5%; animation-delay: 2s; }
-.floating-element:nth-child(4) { bottom: 20%; right: 20%; animation-delay: 3s; }
-.floating-element:nth-child(5) { top: 40%; left: 8%; animation-delay: 4s; }
-.floating-element:nth-child(6) { top: 60%; right: 10%; animation-delay: 5s; }
+.floating-element:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+.floating-element:nth-child(2) { top: 15%; right: 10%; animation-delay: 1s; }
+.floating-element:nth-child(3) { bottom: 25%; left: 10%; animation-delay: 2s; }
+.floating-element:nth-child(4) { bottom: 15%; right: 15%; animation-delay: 3s; }
+.floating-element:nth-child(5) { top: 35%; left: 2%; animation-delay: 4s; }
+.floating-element:nth-child(6) { top: 55%; right: 5%; animation-delay: 5s; }
 
-
+/* Decorative Elements */
+.wave-decoration {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.05) 100%);
+    clip-path: ellipse(100% 100% at 50% 100%);
+    z-index: 1;
+}
 
 /* Animations */
 @keyframes float {
-    0%, 100% { transform: perspective(1000px) rotateY(-15deg) rotateX(5deg) translateY(0px); }
-    50% { transform: perspective(1000px) rotateY(-15deg) rotateX(5deg) translateY(-10px); }
+    0%, 100% { 
+        transform: perspective(1000px) rotateY(-15deg) rotateX(5deg) translateY(0px); 
+    }
+    50% { 
+        transform: perspective(1000px) rotateY(-15deg) rotateX(5deg) translateY(-15px); 
+    }
 }
 
 @keyframes floatAround {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    25% { transform: translateY(-10px) rotate(5deg); }
-    50% { transform: translateY(-5px) rotate(-3deg); }
-    75% { transform: translateY(-8px) rotate(2deg); }
+    0%, 100% { 
+        transform: translateY(0px) rotate(0deg); 
+    }
+    25% { 
+        transform: translateY(-10px) rotate(5deg); 
+    }
+    50% { 
+        transform: translateY(-5px) rotate(-3deg); 
+    }
+    75% { 
+        transform: translateY(-8px) rotate(2deg); 
+    }
 }
 
-/* Responsive design */
+/* Responsive Design */
 @media (max-width: 768px) {
     .navbar {
         padding: 15px 20px;
     }
     
-    .hero {
+    .nav-links {
+        gap: 20px;
+    }
+    
+    .hero,
+    .about-section {
         flex-direction: column;
         text-align: center;
         padding: 40px 20px;
+        gap: 40px;
     }
     
-    .hero h1 {
+    .hero h1,
+    .about-content h1 {
         font-size: 2.5rem;
     }
     
@@ -325,12 +637,69 @@ body::before {
         font-size: 1.1rem;
     }
     
+    .about-content p {
+        font-size: 1rem;
+    }
+    
     .laptop {
         width: 250px;
         height: 160px;
     }
     
-    .nav-links {
-        gap: 20px;
+    .illustration-container {
+        width: 300px;
+        height: 300px;
     }
-}   
+    
+    .notepad-shield {
+        width: 150px;
+        height: 180px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 10px 15px;
+    }
+    
+    .logo {
+        font-size: 20px;
+    }
+    
+    .nav-links {
+        gap: 15px;
+    }
+    
+    .nav-links a span {
+        display: none;
+    }
+    
+    .hero h1,
+    .about-content h1 {
+        font-size: 2rem;
+    }
+    
+    .hero p,
+    .about-content p {
+        font-size: 0.9rem;
+    }
+    
+    .laptop {
+        width: 200px;
+        height: 130px;
+    }
+    
+    .illustration-container {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+/* Additional utility classes */
+.section-hidden {
+    display: none !important;
+}
+
+.section-visible {
+    display: flex !important;
+}

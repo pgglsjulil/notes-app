@@ -13,16 +13,15 @@
             Nama<br>Website
         </div>
         <ul class="nav-links">
-            <li><a href="#"><span>🏠</span> Home</a></li>
-            <li><a href="#"><span>ℹ️</span> About</a></li>
+            <li><a href="#" onclick="showHome()" class="active"><span>🏠</span> Home</a></li>
+            <li><a href="#" onclick="showAbout()"><span>ℹ️</span> About</a></li>
         </ul>
-    </div> 
         <ul class="login-btn">
             <li><a href="#"><span></span>Login</a></li>
-        <ul>
+        </ul>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section (Home) -->
     <section class="hero">
         <div class="hero-content">
             <h1>Welcome to Notemaker</h1>
@@ -99,6 +98,96 @@
         </div>
     </section>
 
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="about-content">
+            <h1>With built-in lock features, your notes stay safe and accessible only to you.</h1>
+            <p>We believe your thoughts, ideas, and personal plans deserve a protected space — free from prying eyes. Notemaker is your private digital notebook, where you can write freely and securely.</p>
+            <button class="get-started-btn">Get Started</button>
+        </div>
+        
+        <div class="about-illustration">
+            <div class="illustration-container">
+                <!-- Floating decorative elements -->
+                <div class="floating-element">
+                    <div class="gear"></div>
+                </div>
+                <div class="floating-element">
+                    <div class="lightbulb"></div>
+                </div>
+                <div class="floating-element">
+                    <div class="document"></div>
+                </div>
+                <div class="floating-element">
+                    <div class="gear"></div>
+                </div>
+                <div class="floating-element">
+                    <div class="lightbulb"></div>
+                </div>
+                <div class="floating-element">
+                    <div class="document"></div>
+                </div>
+                
+                <!-- Main notepad illustration -->
+                <div class="notepad-shield">
+                    <div class="notepad-content">
+                        <div class="note-line"></div>
+                        <div class="note-line"></div>
+                        <div class="note-line"></div>
+                        <div class="note-line"></div>
+                    </div>
+                    <div class="checkmarks">
+                        <div class="checkmark"></div>
+                        <div class="checkmark"></div>
+                    </div>
+                </div>
+                
+                <!-- Character with pencil -->
+                <!-- <div class="character">
+                    <div class="character-head"></div>
+                    <div class="character-body"></div>
+                    <div class="character-arm"></div>
+                    <div class="pencil"></div>
+                </div> -->
+            </div>
+        </div>
+    </section>
 
+    <!-- Decorative wave -->
+    <div class="wave-decoration"></div>
+
+    <!-- JavaScript -->
+    <script>
+        function showHome() {
+            // Hide about section and show hero section
+            document.querySelector('.about-section').style.display = 'none';
+            document.querySelector('.hero').style.display = 'flex';
+            
+            // Update navigation active states
+            document.querySelector('.nav-links a[onclick="showHome()"]').classList.add('active');
+            document.querySelector('.nav-links a[onclick="showAbout()"]').classList.remove('active');
+            
+            // Update page title
+            document.title = 'Notemaker - Your Ideas. Organized. Anywhere. Anytime.';
+        }
+
+        function showAbout() {
+            // Hide hero section and show about section
+            document.querySelector('.hero').style.display = 'none';
+            document.querySelector('.about-section').style.display = 'flex';
+            
+            // Update navigation active states
+            document.querySelector('.nav-links a[onclick="showAbout()"]').classList.add('active');
+            document.querySelector('.nav-links a[onclick="showHome()"]').classList.remove('active');
+            
+            // Update page title
+            document.title = 'About - Notemaker';
+        }
+
+        // Initialize page - show home by default
+        document.addEventListener('DOMContentLoaded', function() {
+            showHome();
+        });
+    </script>
 </body>
 </html>
