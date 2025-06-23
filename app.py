@@ -9,7 +9,7 @@ app = Flask(__name__,
 # Membuat Rute (Route) untuk Halaman Utama
 
 @app.route('/')
-def home(): # Laman home
+def landing_page(): # Laman landing page
     
     return render_template('landing_page.html')
 
@@ -18,7 +18,7 @@ def login(): # Laman login
     
     if request.method == 'POST':
         
-        return "Anda mencoba untuk login!"
+        return render_template('home.html')
 
     
     return render_template('login.html')
@@ -33,6 +33,11 @@ def signup(): # Laman sign-up
         return redirect(url_for('login'))
     
     return render_template('signup.html')
+
+@app.route('/home')
+def home(): # Laman home
+    
+    return render_template('home.html')
 
 # Memastikan server hanya berjalan saat file ini dieksekusi langsung
 if __name__ == '__main__':
