@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="navbar">
         <div class="logo">
             Notemaker
@@ -16,14 +15,13 @@
         <ul class="nav-links">
             <li><a href="#" onclick="showHome()" class="active"><span>🏠</span> Home</a></li>
             <li><a href="#" onclick="showAbout()"><span>ℹ️</span> About</a></li>
-            <li><a href="#" onclick=""><span>📝</span> My Notes</a></li>
+            <li><a href="#" onclick="showMynotes()"><span>📝</span> My Notes</a></li>
         </ul>
         <ul class="login-btn" style="font-size:12px;">
             <li><a href="/profile"><i class="fa-solid fa-user fa-2x"></i></a></li>
         </ul>
     </nav>
 
-    <!-- Hero Section (Home) -->
     <section class="hero">
         <div class="hero-content">
             <h1>Welcome to Notemaker</h1>
@@ -32,7 +30,6 @@
         </div>
         
         <div class="hero-illustration">
-            <!-- Floating elements -->
             <div class="floating-element">
                 <div class="plus">+</div>
             </div>
@@ -73,7 +70,6 @@
                 </div>
             </div>
             
-            <!-- Laptop illustration -->
             <div class="laptop-container">
                 <div class="laptop">
                     <div class="screen-content">
@@ -92,7 +88,6 @@
                     <div class="keyboard"></div>
                 </div>
                 
-                <!-- Hand with pen -->
                 <div class="hand">
                     <div class="hand-shape"></div>
                     <div class="pen"></div>
@@ -101,7 +96,6 @@
         </div>
     </section>
 
-    <!-- About Section -->
     <section class="about-section">
         <div class="about-content">
             <h1>With built-in lock features, your notes stay safe and accessible only to you.</h1>
@@ -110,7 +104,6 @@
         
         <div class="about-illustration">
             <div class="illustration-container">
-                <!-- Floating decorative elements -->
                 <div class="floating-element">
                     <div class="gear"></div>
                 </div>
@@ -130,7 +123,6 @@
                     <div class="document"></div>
                 </div>
                 
-                <!-- Main notepad illustration -->
                 <div class="notepad-shield">
                     <div class="notepad-content">
                         <div class="note-line"></div>
@@ -144,47 +136,247 @@
                     </div>
                 </div>
                 
-                <!-- Character with pencil -->
-                <!-- <div class="character">
-                    <div class="character-head"></div>
-                    <div class="character-body"></div>
-                    <div class="character-arm"></div>
-                    <div class="pencil"></div>
-                </div> -->
-            </div>
+                </div>
         </div>
     </section>
 
-    <!-- Decorative wave -->
+    <section class="notes-section">
+    <main class="main-content">
+        <div class="user-profile">
+            <div class="profile-avatar">
+                <svg class="icon" viewBox="0 0 24 24" style="width: 40px; height: 40px;">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                </svg>
+            </div>
+            <div class="username">Username</div>
+            <div class="user-email">Username@gmail.com</div>
+        </div>
+
+        <div class="notes-wrapper"> 
+            <div class="notes-header"> Recent Notes</div> 
+            
+            <div class="notes-container"> 
+                <div class="note-item">
+                    <div class="note-content" onclick="openNote('Judul 1')">
+                        <div class="note-title">Judul 1</div>
+                        <div class="note-description">Isi dadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa buku pada judul 1</div>
+                    </div>
+                    <div class="note-actions">
+                        <button class="delete-btn" onclick="deleteNote('Judul 1')" title="Delete note">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M3 6h18m-2 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                <line x1="10" y1="11" x2="10" y2="17"/>
+                                <line x1="14" y1="11" x2="14" y2="17"/>
+                            </svg>
+                        </button>
+                        <div class="note-arrow">›</div>
+                    </div>
+                </div>
+                <div class="note-item">
+                    <div class="note-content" onclick="openNote('Judul 2')">
+                        <div class="note-title">Judul 2</div>
+                        <div class="note-description">Isi buku pada judul 2</div>
+                    </div>
+                    <div class="note-actions">
+                        <button class="delete-btn" onclick="deleteNote('Judul 2')" title="Delete note">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M3 6h18m-2 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                <line x1="10" y1="11" x2="10" y2="17"/>
+                                <line x1="14" y1="11" x2="14" y2="17"/>
+                            </svg>
+                        </button>
+                        <div class="note-arrow">›</div>
+                    </div>
+                </div>
+                <div class="note-item">
+                    <div class="note-content" onclick="openNote('Judul 3: Resep Masakan')">
+                        <div class="note-title">Judul 3: Resep Masakan</div>
+                        <div class="note-description">Daftar bahan: ayam, bawang, cabai, santan. Cara membuat: tumis bumbu, masukkan ayam, masak hingga matang.</div>
+                    </div>
+                    <div class="note-actions">
+                        <button class="delete-btn" onclick="deleteNote('Judul 3: Resep Masakan')" title="Delete note">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M3 6h18m-2 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                <line x1="10" y1="11" x2="10" y2="17"/>
+                                <line x1="14" y1="11" x2="14" y2="17"/>
+                            </svg>
+                        </button>
+                        <div class="note-arrow">›</div>
+                    </div>
+                </div>
+                <div class="note-item">
+                    <div class="note-content" onclick="openNote('Judul 4: Ide Proyek Baru')">
+                        <div class="note-title">Judul 4: Ide Proyek Baru</div>
+                        <div class="note-description">Pengembangan aplikasi mobile untuk manajemen tugas pribadi dengan fitur AI. Tahap awal: riset pasar dan desain UI/UX.</div>
+                    </div>
+                    <div class="note-actions">
+                        <button class="delete-btn" onclick="deleteNote('Judul 4: Ide Proyek Baru')" title="Delete note">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M3 6h18m-2 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                <line x1="10" y1="11" x2="10" y2="17"/>
+                                <line x1="14" y1="11" x2="14" y2="17"/>
+                            </svg>
+                        </button>
+                        <div class="note-arrow">›</div>
+                    </div>
+                </div>
+                <div class="note-item">
+                    <div class="note-content" onclick="openNote('Judul 5: Catatan Rapat Penting')">
+                        <div class="note-title">Judul 5: Catatan Rapat Penting</div>
+                        <div class="note-description">Pembahasan strategi pemasaran Q3. Poin-poin aksi: kampanye media sosial, optimasi SEO, kolaborasi influencer.</div>
+                    </div>
+                    <div class="note-actions">
+                        <button class="delete-btn" onclick="deleteNote('Judul 5: Catatan Rapat Penting')" title="Delete note">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M3 6h18m-2 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                <line x1="10" y1="11" x2="10" y2="17"/>
+                                <line x1="14" y1="11" x2="14" y2="17"/>
+                            </svg>
+                        </button>
+                        <div class="note-arrow">›</div>
+                    </div>
+                </div>
+                <div class="note-item">
+                    <div class="note-content" onclick="openNote('Judul 6: Daftar Belanja')">
+                        <div class="note-title">Judul 6: Daftar Belanja</div>
+                        <div class="note-description">Susu, roti, telur, buah-buahan, sayuran hijau, dan camilan sehat. Jangan lupa cek promo!</div>
+                    </div>
+                    <div class="note-actions">
+                        <button class="delete-btn" onclick="deleteNote('Judul 6: Daftar Belanja')" title="Delete note">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M3 6h18m-2 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                <line x1="10" y1="11" x2="10" y2="17"/>
+                                <line x1="14" y1="11" x2="14" y2="17"/>
+                            </svg>
+                        </button>
+                        <div class="note-arrow">›</div>
+                    </div>
+                </div>
+                <div class="note-item">
+                    <div class="note-content" onclick="openNote('Judul 7: Ide Liburan')">
+                        <div class="note-title">Judul 7: Ide Liburan</div>
+                        <div class="note-description">Destinasi: Bali atau Lombok. Aktivitas: snorkeling, mendaki gunung, bersantai di pantai. Biaya perkiraan: Rp X juta.</div>
+                    </div>
+                    <div class="note-actions">
+                        <button class="delete-btn" onclick="deleteNote('Judul 7: Ide Liburan')" title="Delete note">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M3 6h18m-2 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                <line x1="10" y1="11" x2="10" y2="17"/>
+                                <line x1="14" y1="11" x2="14" y2="17"/>
+                            </svg>
+                        </button>
+                        <div class="note-arrow">›</div>
+                    </div>
+                </div>
+                <div class="note-item">
+                    <div class="note-content" onclick="openNote('Judul 8: Quotes Inspiratif')">
+                        <div class="note-title">Judul 8: Quotes Inspiratif</div>
+                        <div class="note-description">"The only way to do great work is to love what you do." - Steve Jobs. "Never give up on a dream just because of the time it will take to accomplish it. The time will pass anyway." - Earl Nightingale.</div>
+                    </div>
+                    <div class="note-actions">
+                        <button class="delete-btn" onclick="deleteNote('Judul 8: Quotes Inspiratif')" title="Delete note">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M3 6h18m-2 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                <line x1="10" y1="11" x2="10" y2="17"/>
+                                <line x1="14" y1="11" x2="14" y2="17"/>
+                            </svg>
+                        </button>
+                        <div class="note-arrow">›</div>
+                    </div>
+                </div>
+                <div class="note-item">
+                    <div class="note-content" onclick="openNote('Judul 9: Ide Konten Blog')">
+                        <div class="note-title">Judul 9: Ide Konten Blog</div>
+                        <div class="note-description">Topik: Tips produktivitas untuk freelancer. Keywords: remote work, time management, digital nomad.</div>
+                    </div>
+                    <div class="note-actions">
+                        <button class="delete-btn" onclick="deleteNote('Judul 9: Ide Konten Blog')" title="Delete note">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M3 6h18m-2 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                <line x1="10" y1="11" x2="10" y2="17"/>
+                                <line x1="14" y1="11" x2="14" y2="17"/>
+                            </svg>
+                        </button>
+                        <div class="note-arrow">›</div>
+                    </div>
+                </div>
+                <div class="note-item">
+                    <div class="note-content" onclick="openNote('Judul 10: Rencana Pembelajaran')">
+                        <div class="note-title">Judul 10: Rencana Pembelajaran</div>
+                        <div class="note-description">Belajar React Native: modul 1 - dasar-dasar, modul 2 - komponen UI, modul 3 - integrasi API. Target selesai 1 bulan.</div>
+                    </div>
+                    <div class="note-actions">
+                        <button class="delete-btn" onclick="deleteNote('Judul 10: Rencana Pembelajaran')" title="Delete note">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M3 6h18m-2 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
+                                <line x1="10" y1="11" x2="10" y2="17"/>
+                                <line x1="14" y1="11" x2="14" y2="17"/>
+                            </svg>
+                        </button>
+                        <div class="note-arrow">›</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </main>
+
+    <button class="add-button" onclick="addNote()">
+        <svg width="0" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <line x1="12" y1="5" x2="12" y2="19"/>
+            <line x1="5" y1="12" x2="19" y2="12"/>
+        </svg>
+        + ADD
+    </button>
+    </section>
+
     <div class="wave-decoration"></div>
 
-    <!-- JavaScript -->
     <script>
-        function showHome() {
-            // Hide about section and show hero section
-            document.querySelector('.about-section').style.display = 'none';
-            document.querySelector('.hero').style.display = 'flex';
-            
-            // Update navigation active states
-            document.querySelector('.nav-links a[onclick="showHome()"]').classList.add('active');
-            document.querySelector('.nav-links a[onclick="showAbout()"]').classList.remove('active');
-            
-            // Update page title
-            document.title = 'Notemaker - Your Ideas. Organized. Anywhere. Anytime.';
-        }
+         function showHome() {
+        // Hide about and notes sections, show hero section
+        document.querySelector('.about-section').style.display = 'none';
+        document.querySelector('.notes-section').style.display = 'none'; // Ensure notes section is hidden
+        document.querySelector('.hero').style.display = 'flex';
 
-        function showAbout() {
-            // Hide hero section and show about section
-            document.querySelector('.hero').style.display = 'none';
-            document.querySelector('.about-section').style.display = 'flex';
-            
-            // Update navigation active states
-            document.querySelector('.nav-links a[onclick="showAbout()"]').classList.add('active');
-            document.querySelector('.nav-links a[onclick="showHome()"]').classList.remove('active');
-            
-            // Update page title
-            document.title = 'About - Notemaker';
-        }
+        // Update navigation active states
+        document.querySelector('.nav-links a[onclick="showHome()"]').classList.add('active');
+        document.querySelector('.nav-links a[onclick="showAbout()"]').classList.remove('active');
+        document.querySelector('.nav-links a[onclick="showMynotes()"]').classList.remove('active'); // Remove active from My Notes
+
+        // Update page title
+        document.title = 'Notemaker - Your Ideas. Organized. Anywhere. Anytime.';
+    }
+
+    function showAbout() {
+        // Hide hero and notes sections, show about section
+        document.querySelector('.hero').style.display = 'none';
+        document.querySelector('.notes-section').style.display = 'none'; // This line fixes the issue
+        document.querySelector('.about-section').style.display = 'flex';
+
+        // Update navigation active states
+        document.querySelector('.nav-links a[onclick="showAbout()"]').classList.add('active');
+        document.querySelector('.nav-links a[onclick="showHome()"]').classList.remove('active');
+        document.querySelector('.nav-links a[onclick="showMynotes()"]').classList.remove('active'); // Remove active from My Notes
+
+        // Update page title
+        document.title = 'About - Notemaker';
+    }
+
+    function showMynotes() {
+        // Hide hero and about sections, show notes section
+        document.querySelector('.hero').style.display = 'none';
+        document.querySelector('.about-section').style.display = 'none';
+        document.querySelector('.notes-section').style.display = 'flex';
+
+        // Update navigation active states
+        document.querySelector('.nav-links a[onclick="showMynotes()"]').classList.add('active');
+        document.querySelector('.nav-links a[onclick="showHome()"]').classList.remove('active');
+        document.querySelector('.nav-links a[onclick="showAbout()"]').classList.remove('active');
+
+        // Update page title
+        document.title = 'My Notes - Notemaker';
+    }
 
         // Initialize page - show home by default
         document.addEventListener('DOMContentLoaded', function() {

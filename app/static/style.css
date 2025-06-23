@@ -613,11 +613,11 @@ body::before {
 /* Responsive Design */
 @media (max-width: 768px) {
     .navbar {
-        padding: 15px 20px;
+        padding: 1rem;
     }
     
     .nav-links {
-        gap: 20px;
+        gap: 1rem;
     }
     
     .hero,
@@ -887,4 +887,259 @@ body::before {
     color: #e44343;
     font-weight: 600;
     text-decoration: none;
+}
+
+/*MY NOTES*/
+
+.notes-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 140px 100px 60px;
+    max-width: 1500px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 5;
+    gap: 60px;
+    min-height: 0vh;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4rem 2rem;
+    gap: 3rem;
+}
+
+/* User profile styles (existing code) */
+.user-profile {
+    text-align: center;
+}
+
+.profile-avatar {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    font-size: 2rem;
+}
+
+.username {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #f39c12;
+    margin-bottom: 0.5rem;
+}
+
+.user-email {
+    color: #bdc3c7;
+    font-style: italic;
+}
+
+/* Notes Container (modified for positioning) */
+.notes-container {
+    width: 100%;
+    max-width: 800px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    max-height: 300px;
+    overflow-y: auto;
+    /* Added position: relative; here */
+    position: relative; /* Crucial for positioning the add-button absolutely within it */
+
+    /* --- Scrollbar Styling --- */
+    /* For Firefox */
+    scrollbar-width: thin; /* "auto" or "thin" */
+    scrollbar-color: #f39c12 rgba(255, 255, 255, 0.1); /* thumb color track color */
+}
+
+/* For WebKit browsers (Chrome, Safari, Edge, Opera) (existing code) */
+.notes-container::-webkit-scrollbar {
+    width: 8px; /* width of the scrollbar */
+}
+
+.notes-container::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1); /* color of the track */
+    border-radius: 10px; /* rounded corners for the track */
+}
+
+.notes-container::-webkit-scrollbar-thumb {
+    background-color: #f39c12; /* color of the scroll thumb */
+    border-radius: 10px; /* rounded corners for the thumb */
+    border: 2px solid rgba(0, 0, 0, 0); /* creates a little padding around the thumb */
+}
+
+.notes-container::-webkit-scrollbar-thumb:hover {
+    background-color: #e67e22; /* darker shade on hover */
+}
+/* --- End Scrollbar Styling --- */
+
+
+.notes-header {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #f39c12;
+    margin-bottom: 1.5rem;
+}
+
+/* Note item styles (existing code) */
+.note-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* Adjusted padding to distribute space better */
+    padding: 1rem; /* Uniform padding */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    flex-wrap: nowrap; /* Prevent note-item itself from wrapping, let content wrap internally */
+    width: 100%; /* Ensure each note item takes full available width */
+}
+
+.note-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+    margin: 0; /* Removed negative margin as padding is now uniform */
+    /* padding: 1rem; Keep this from the above, if you want hover to slightly expand */
+    border-radius: 10px;
+}
+
+.note-item:last-child {
+    border-bottom: none;
+}
+
+.note-content {
+    display: flex;
+    flex-direction: column; /* Stacks title and description */
+    gap: 0.5rem;
+    cursor: pointer;
+    flex: 1; /* Allows note-content to take available space */
+    min-width: 0; /* Important for flex items to shrink correctly */
+    overflow-wrap: break-word; /* For breaking very long words */
+    word-wrap: break-word; /* Fallback for older browsers */
+    white-space: normal; /* Ensures text wraps naturally */
+    padding-right: 1rem; /* Add some space between content and actions */
+}
+
+.note-title {
+    color: #f39c12;
+    font-weight: 600;
+    word-break: break-word;
+    white-space: normal;
+}
+
+.note-description {
+    color: #bdc3c7;
+    word-break: break-word;
+    white-space: normal;
+}
+
+.note-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem; /* Increased gap between delete button and arrow */
+    flex-shrink: 0; /* Prevents actions from shrinking */
+    padding-left: 0.5rem; /* Add some space if content gets close */
+}
+
+.delete-btn {
+    color: #e74c3c;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1; /* Ensures icon is centered if it's a character */
+}
+
+.delete-btn:hover {
+    background: rgba(231, 76, 60, 0.1);
+    transform: scale(1.1);
+}
+
+.note-arrow {
+    color: #f39c12;
+    font-size: 1.2rem;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+    line-height: 1; /* Helps vertical alignment */
+}
+
+.note-item:hover .note-arrow {
+    opacity: 1;
+    transform: translateX(5px);
+}
+
+/* ADD Button (modified for new position) */
+.add-button {
+    position: absolute; /* Changed to absolute */
+    top: 25rem;          /* Adjusted to move it into the top-right corner of .notes-container */
+    /* right: 0rem;        Adjusted for horizontal positioning relative to the container's right edge */
+    left: 65rem;
+
+    background: #f39c12;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(243, 156, 18, 0.4);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0rem;
+    z-index: 100; /* Ensures it stays on top of other elements */
+}
+
+.add-button:hover {
+    background: #e67e22;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(243, 156, 18, 0.6);
+}
+
+.icon {
+    width: 16px;
+    height: 16px;
+    fill: currentColor;
+}
+
+/* Media queries (existing code) */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem;
+    }
+
+    .nav-links {
+        gap: 1rem;
+    }
+
+    .main-content {
+        padding: 2rem 1rem;
+    }
+
+    .notes-container {
+        padding: 1.5rem;
+    }
+
+    .note-content {
+        flex-direction: column; /* This was already in your media query, good */
+        gap: 0.5rem;
+        padding-right: 0.5rem; /* Adjust padding for smaller screens */
+    }
+
+    .note-actions {
+        padding-left: 0; /* No extra padding on smaller screens */
+    }
 }
