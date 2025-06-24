@@ -2,6 +2,7 @@ from flask import Blueprint, render_template, request, redirect, url_for, flash
 from app.models import User
 from app import db
 from flask_login import login_user
+from werkzeug.security import generate_password_hash, check_password_hash
 
 main = Blueprint('main', __name__)
 
@@ -34,16 +35,17 @@ def register():
 @main.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        username = request.form['username']
+        email = request.form['email']
         password = request.form['password']
 
-        user = User.query.filter_by(username=username, password=password).first()
-        if user:
+        user = User.query.filter_by(email=email).first()
+
+        if user and check_password_hash(user.password, password):
             login_user(user)
             flash('Login successful!', 'success')
             return redirect(url_for('main.home'))
         else:
-            flash('Invalid username or password.', 'danger')
+            flash('Invalid email or password.', 'danger')
             return redirect(url_for('main.login'))
 
     return render_template('login.html')
