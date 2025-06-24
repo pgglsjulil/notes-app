@@ -1143,3 +1143,23 @@ body::before {
         padding-left: 0; /* No extra padding on smaller screens */
     }
 }
+
+.flash-messages {
+    margin-bottom: 1rem;
+}
+
+.alert {
+    padding: 15px;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    transition: opacity 0.3s ease;
+}
+
+.alert-success {
+    background-color: #2ecc71; /* Green */
+}
+
+.alert-danger {
+    background-color: #e74c3c; /* Red */
+}

@@ -8,6 +8,15 @@
         <h3>Welcome Back</h3>
         <p>Please login to your account.</p>
     </div>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash-messages">
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
     <form action="{{ url_for('main.login') }}" method="post" class="auth-form">
         <div class="form-group">
             <label for="email">Email</label>
