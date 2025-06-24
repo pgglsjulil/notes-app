@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notemaker - Your Ideas. Organized. Anywhere. Anytime.</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="style2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
@@ -330,9 +331,7 @@
     </button>
 
     </section>
-
     <div class="wave-decoration"></div>
-
     <script>
          function showHome() {
         // Hide about and notes sections, show hero section
@@ -348,7 +347,6 @@
         // Update page title
         document.title = 'Notemaker - Your Ideas. Organized. Anywhere. Anytime.';
     }
-
     function showAbout() {
         // Hide hero and notes sections, show about section
         document.querySelector('.hero').style.display = 'none';
@@ -363,7 +361,6 @@
         // Update page title
         document.title = 'About - Notemaker';
     }
-
     function showMynotes() {
         // Hide hero and about sections, show notes section
         document.querySelector('.hero').style.display = 'none';
@@ -378,10 +375,9 @@
         // Update page title
         document.title = 'My Notes - Notemaker';
     }
-
         // Initialize page - show home by default
         document.addEventListener('DOMContentLoaded', function() {
-            showHome();
+        showMynotes();
         });
     </script>
 </body>

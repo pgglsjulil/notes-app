@@ -73,3 +73,16 @@ def home():
         return redirect(url_for('main.login'))
 
     return render_template('home.html')
+
+@main.route('/catatan')
+def catatan():
+    return render_template('catatan.html')
+
+@main.route('/home_kemynotes')
+def home_kemynotes():
+    return render_template('home_kemynotes.html')
+
+# @main.route('/show-mynotes')
+# def show_mynotes():
+#     return redirect(url_for('home', view='show-mynotes'))
+

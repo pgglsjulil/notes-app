@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Judul Catatan</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="custom-body">
+        <div class="custom-header">
+            <h1 class="custom-editable-title" contenteditable="true">Judul Catatan</h1>
+            <div class="custom-editable-subtitle" contenteditable="true">Deskripsi Singkat</div>
+            <div class="custom-editable-tagline" contenteditable="true">Tagline</div>
+        </div>
+
+    <div class="overlay" id="overlay" onclick="toggleMenu()"></div>
+
+    <div class="custommain-content">
+        <div class="content-area">
+            <button class="close-btn" onclick="window.location.href='home_kemynotes'">×</button>
+            <div class="note-editor">
+                <textarea class="customnote-content" placeholder="Mulai menulis catatan Anda di sini..."></textarea>
+
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
