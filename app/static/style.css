@@ -85,6 +85,48 @@ body::before {
     color: #f39c12;
 }
 
+.profile-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-icon {
+  font-size: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.profile-icon:hover {
+  color: #f39c12;
+}
+
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  right: 0;
+  margin-top: 8px;
+  background-color: #f39c12;
+  font-weight: 600;
+  min-width: 120px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.dropdown-menu a {
+  color: #2c3e50;
+  text-decoration: none;
+  display: block;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.dropdown-menu a:hover {
+  background-color: #e67e22;
+}
+
 /* Hero Section (Home Page) */
 .hero {
     display: flex;
