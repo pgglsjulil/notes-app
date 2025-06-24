@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notemaker - Your Ideas. Organized. Anywhere. Anytime.</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="style2.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
@@ -17,12 +18,9 @@
             <li><a href="#" onclick="showAbout()"><span>ℹ️</span> About</a></li>
             <li><a href="#" onclick="showMynotes()"><span>📝</span> My Notes</a></li>
         </ul>
-        <div class="profile-dropdown">
-            <button id="profile-btn" class="profile-icon"><i class="fa-solid fa-user fa-2x"></i></button>
-            <div id="dropdown-menu" class="dropdown-menu">
-                <a href="/">Sign Out</a>
-            </div>
-        </div>
+        <ul class="login-btn" style="font-size:12px;">
+            <li><a href="/profile"><i class="fa-solid fa-user fa-2x"></i></a></li>
+        </ul>
     </nav>
 
     <section class="hero">
@@ -333,74 +331,53 @@
     </button>
 
     </section>
-
     <div class="wave-decoration"></div>
-
     <script>
-        function showHome() {
-            // Hide about and notes sections, show hero section
-            document.querySelector('.about-section').style.display = 'none';
-            document.querySelector('.notes-section').style.display = 'none'; // Ensure notes section is hidden
-            document.querySelector('.hero').style.display = 'flex';
+         function showHome() {
+        // Hide about and notes sections, show hero section
+        document.querySelector('.about-section').style.display = 'none';
+        document.querySelector('.notes-section').style.display = 'none'; // Ensure notes section is hidden
+        document.querySelector('.hero').style.display = 'flex';
 
-            // Update navigation active states
-            document.querySelector('.nav-links a[onclick="showHome()"]').classList.add('active');
-            document.querySelector('.nav-links a[onclick="showAbout()"]').classList.remove('active');
-            document.querySelector('.nav-links a[onclick="showMynotes()"]').classList.remove('active'); // Remove active from My Notes
+        // Update navigation active states
+        document.querySelector('.nav-links a[onclick="showHome()"]').classList.add('active');
+        document.querySelector('.nav-links a[onclick="showAbout()"]').classList.remove('active');
+        document.querySelector('.nav-links a[onclick="showMynotes()"]').classList.remove('active'); // Remove active from My Notes
 
-            // Update page title
-            document.title = 'Notemaker - Your Ideas. Organized. Anywhere. Anytime.';
-        }
+        // Update page title
+        document.title = 'Notemaker - Your Ideas. Organized. Anywhere. Anytime.';
+    }
+    function showAbout() {
+        // Hide hero and notes sections, show about section
+        document.querySelector('.hero').style.display = 'none';
+        document.querySelector('.notes-section').style.display = 'none'; // This line fixes the issue
+        document.querySelector('.about-section').style.display = 'flex';
 
-        function showAbout() {
-            // Hide hero and notes sections, show about section
-            document.querySelector('.hero').style.display = 'none';
-            document.querySelector('.notes-section').style.display = 'none'; // This line fixes the issue
-            document.querySelector('.about-section').style.display = 'flex';
+        // Update navigation active states
+        document.querySelector('.nav-links a[onclick="showAbout()"]').classList.add('active');
+        document.querySelector('.nav-links a[onclick="showHome()"]').classList.remove('active');
+        document.querySelector('.nav-links a[onclick="showMynotes()"]').classList.remove('active'); // Remove active from My Notes
 
-            // Update navigation active states
-            document.querySelector('.nav-links a[onclick="showAbout()"]').classList.add('active');
-            document.querySelector('.nav-links a[onclick="showHome()"]').classList.remove('active');
-            document.querySelector('.nav-links a[onclick="showMynotes()"]').classList.remove('active'); // Remove active from My Notes
+        // Update page title
+        document.title = 'About - Notemaker';
+    }
+    function showMynotes() {
+        // Hide hero and about sections, show notes section
+        document.querySelector('.hero').style.display = 'none';
+        document.querySelector('.about-section').style.display = 'none';
+        document.querySelector('.notes-section').style.display = 'flex';
 
-            // Update page title
-            document.title = 'About - Notemaker';
-        }
+        // Update navigation active states
+        document.querySelector('.nav-links a[onclick="showMynotes()"]').classList.add('active');
+        document.querySelector('.nav-links a[onclick="showHome()"]').classList.remove('active');
+        document.querySelector('.nav-links a[onclick="showAbout()"]').classList.remove('active');
 
-        function showMynotes() {
-            // Hide hero and about sections, show notes section
-            document.querySelector('.hero').style.display = 'none';
-            document.querySelector('.about-section').style.display = 'none';
-            document.querySelector('.notes-section').style.display = 'flex';
-
-            // Update navigation active states
-            document.querySelector('.nav-links a[onclick="showMynotes()"]').classList.add('active');
-            document.querySelector('.nav-links a[onclick="showHome()"]').classList.remove('active');
-            document.querySelector('.nav-links a[onclick="showAbout()"]').classList.remove('active');
-
-            // Update page title
-            document.title = 'My Notes - Notemaker';
-        }
-
+        // Update page title
+        document.title = 'My Notes - Notemaker';
+    }
         // Initialize page - show home by default
         document.addEventListener('DOMContentLoaded', function() {
-            showHome();
-        });
-    </script>
-
-    <script>
-        const profileBtn = document.getElementById('profile-btn');
-        const dropdownMenu = document.getElementById('dropdown-menu');
-
-        // Show menu when click profile icon
-        profileBtn.addEventListener('click', function (event) {
-            event.stopPropagation(); // Prevent clicks from flowing to the body
-            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
-        });
-
-        // Close menu when click outside
-        window.addEventListener('click', function () {
-            dropdownMenu.style.display = 'none';
+        showMynotes();
         });
     </script>
 </body>
