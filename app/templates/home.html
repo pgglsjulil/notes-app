@@ -389,6 +389,20 @@
     </script>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const hash = window.location.hash;
+
+            if (hash === '#notes') {
+                showMynotes();
+            } else if (hash === '#about') {
+                showAbout();
+            } else {
+                showHome(); // default
+            }
+        });
+    </script>
+
+    <script>
         const profileBtn = document.getElementById('profile-btn');
         const dropdownMenu = document.getElementById('dropdown-menu');
 
