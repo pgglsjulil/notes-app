@@ -1259,10 +1259,6 @@ body::before {
     }
 }
 
-.flash-messages {
-    margin-bottom: 1rem;
-}
-
 .alert {
     padding: 15px;
     border-radius: 8px;
