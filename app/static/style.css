@@ -128,11 +128,44 @@ body::before {
 }
 
 /* Hero Section (Home Page) */
+.hero-inner,
+.about-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.hero,
+.about-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 40px;
+    flex-direction: row-reverse;
+    gap: 60px;
+}
+
+.about-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 40px;
+    flex-direction: row;
+    gap: 60px;
+}
+
 .hero {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 240px 40px 60px;
+    padding: 1px 40px 60px;
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
@@ -304,7 +337,7 @@ body::before {
 
 /* About Section */
 .about-section {
-    display: none;
+    display: block;
     align-items: center;
     justify-content: space-between;
     padding: 140px 100px 60px;
@@ -314,6 +347,8 @@ body::before {
     z-index: 5;
     gap: 60px;
 }
+
+
 
 .about-content {
     flex: 1;
@@ -805,6 +840,40 @@ body::before {
     align-items: center;
 }
 
+.go-back-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 50px;
+}
+
+.go-back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.go-back-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.go-back-btn i {
+  font-size: 17px;
+  color: #2c3e50;
+}
+
+.go-back-text {
+  font-size: 15px;
+  color: #2c3e50;
+  font-weight: 500;
+}
+
 .form-wrapper {
     width: 100%;
 }
@@ -877,7 +946,8 @@ body::before {
 
 .button-group {
     display: flex;
-    gap: 15px;
+    width: 40%;
+    margin-bottom: 30px;
 }
 
 .btn-primary, .btn-secondary {
@@ -912,11 +982,6 @@ body::before {
 
 .btn-secondary:hover {
     background: #f1f2f6;
-}
-
-
-.button-group-signup {
-    margin-bottom: 20px;
 }
 
 .login-redirect {
@@ -1522,4 +1587,5 @@ body::before {
         display: block;
     }
 }
+
 
