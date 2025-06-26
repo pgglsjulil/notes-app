@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+
+{% block title %}
+    {% if note is defined and note %}
+        Edit Note: {{ note.title }}
+    {% else %}
+        Create New Note
+    {% endif %}
+{% endblock %}
+
+{% block main_content %}
+
+    <div class="custommain-content">
+        <div class="content-area">
+            <div class="note-editor">
+                <form id="noteForm" method="POST" action="
+                    {% if note is defined and note %}
+                        {{ url_for('main.create_note', note_id=note.id) }}
+                    {% else %}
+                        {{ url_for('main.create_note') }}
+                    {% endif %}
+                ">
+                    <button type="button" class="close-btn" id="closeButton">
+                        &times; 
+                    </button>
+
+                    <h1 class="note-editor-title" id="displayTitle" contenteditable="true" style="margin-bottom: 20px;">
+                        {% if note is defined and note %}{{ note.title }}{% else %}Judul Catatan{% endif %}
+                    </h1>
+
+                    <input type="text" id="title" name="title" 
+                           value="{% if note is defined and note %}{{ note.title }}{% else %}{% endif %}" 
+                           placeholder="Enter note title" required style="display: none;">
+
+                    <textarea id="content" name="content" class="customnote-content"
+                              placeholder="Mulai menulis catatan Anda di sini..." 
+                              rows="15" required>{% if note is defined and note %}{{ note.content }}{% else %}{% endif %}</textarea>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const noteForm = document.getElementById('noteForm');
+            const closeButton = document.getElementById('closeButton');
+            const titleInput = document.getElementById('title');
+            const contentTextarea = document.getElementById('content');
+            const displayTitle = document.getElementById('displayTitle');
+
+            let isDirty = false;
+
+            displayTitle.addEventListener('input', () => { 
+                isDirty = true; 
+                titleInput.value = displayTitle.textContent.trim();
+            });
+            titleInput.addEventListener('input', () => { 
+                displayTitle.textContent = titleInput.value.trim() || 'Judul Catatan';
+            });
+            contentTextarea.addEventListener('input', () => { isDirty = true; });
+
+            async function saveNote() {
+                const currentTitle = displayTitle.textContent.trim(); 
+                const currentContent = contentTextarea.value.trim();
+
+                titleInput.value = currentTitle; 
+
+                if (!currentTitle || !currentContent) {
+                    alert('Title and content cannot be empty!'); 
+                    return false; 
+                }
+
+                const initialNoteId = "{{ note.id if note is defined and note else '' }}";
+                const initialNoteTitle = "{{ note.title if note is defined and note else '' }}";
+                const initialNoteContent = "{{ note.content if note is defined and note else '' }}";
+
+                if (!isDirty && (initialNoteId === '' || (currentTitle === initialNoteTitle && currentContent === initialNoteContent))) {
+                    console.log("No significant changes, not saving.");
+                    return true;
+                }
+
+                const formData = new FormData(noteForm);
+
+                try {
+                    const response = await fetch(noteForm.action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'X-Requested-With': 'XMLHttpRequest'
+                        }
+                    });
+
+                    if (response.ok) {
+                        const data = await response.json(); 
+                        console.log('Note saved successfully:', data);
+                        isDirty = false; 
+                        if (initialNoteId === '' && data.note_id) { 
+                            noteForm.action = "{{ url_for('main.create_note', note_id=0) }}".replace('0', data.note_id);
+                        }
+                        return true; 
+                    } else {
+                        const errorData = await response.json();
+                        console.error('Failed to save note:', errorData);
+                        alert('Failed to save note: ' + (errorData.message || 'Unknown error'));
+                        return false; 
+                    }
+                } catch (error) {
+                    console.error('Network error during save:', error);
+                    alert('Network error: Could not connect to server.');
+                    return false; 
+                }
+            }
+
+            closeButton.addEventListener('click', async () => {
+                const saved = await saveNote();
+                if (saved) {
+                    window.location.href = "{{ url_for('main.home') }}#notes";
+                }
+            });
+
+            document.addEventListener('keydown', async (e) => {
+                if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+                    e.preventDefault(); 
+                    const saved = await saveNote();
+                    if (saved) {
+                        console.log("Note saved via Ctrl+S");
+                    }
+                }
+            });
+
+            window.addEventListener('beforeunload', (event) => {
+                if (isDirty) {
+                    event.preventDefault();
+                    event.returnValue = ''; 
+                }
+            });
+
+            const initialTitleFromJinja = "{{ note.title if note is defined and note else '' }}";
+            const initialContentFromJinja = "{{ note.content if note is defined and note else '' }}";
+
+            if (initialTitleFromJinja.trim() !== '') {
+                displayTitle.textContent = initialTitleFromJinja;
+                titleInput.value = initialTitleFromJinja; 
+            } else {
+                displayTitle.textContent = 'Judul Catatan'; 
+                titleInput.value = ''; 
+            }
+        });
+    </script>
+{% endblock %}

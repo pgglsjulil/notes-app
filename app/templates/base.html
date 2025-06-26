@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %} - Notemaker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="logo">
+            Notemaker
+        </div>
+        <ul class="nav-links">
+            {% if current_user.is_authenticated %}
+                {# My Notes Link #}
+                <li {% if request.endpoint == 'main.home' or request.endpoint == 'main.view_note' or request.endpoint == 'main.edit_note' %}class="active"{% endif %}><a href="{{ url_for('main.home') }}"><i class="fas fa-sticky-note"></i> My Notes</a></li>
+                {# Create Note Link #}
+                <li {% if request.endpoint == 'main.create_note' %}class="active"{% endif %}><a href="{{ url_for('main.create_note') }}"><i class="fas fa-plus"></i> Create Note</a></li>
+                {# Logout Link #}
+                <li><a href="{{ url_for('main.logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+            {% else %}
+                {# Login Link #}
+                <li {% if request.endpoint == 'main.login' %}class="active"{% endif %}><a href="{{ url_for('main.login') }}"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+                {# Register Link #}
+                <li {% if request.endpoint == 'main.register' %}class="active"{% endif %}><a href="{{ url_for('main.register') }}"><i class="fas fa-user-plus"></i> Register</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    {% block main_content %}{% endblock %} 
+
+</body>
+</html>
