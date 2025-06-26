@@ -1,28 +1,20 @@
-{% extends 'layout.html' %}
+{% extends 'auth_layout.html' %} 
 
 {% block title %}Login{% endblock %}
 
-{% block form_content %}
+{% block auth_form_content %} 
 <div class="form-wrapper">
     <div class="go-back-wrapper">
-      <button class="go-back-btn" onclick="history.back()">
+      <a href="{{ url_for('main.landing_page') }}" class="go-back-btn">
         <i class="fa-solid fa-arrow-left"></i>
-      </button>
-      <span class="go-back-text">Go back</span>
+      </a>
+      <span class="go-back-text">Go back Home</span>
     </div>
     <div class="form-header">
         <h3>Welcome Back</h3>
         <p>Please login to your account.</p>
     </div>
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        <div class="flash-messages">
-          {% for category, message in messages %}
-            <div class="alert alert-{{ category }}">{{ message }}</div>
-          {% endfor %}
-        </div>
-      {% endif %}
-    {% endwith %}
+
     <form action="{{ url_for('main.login') }}" method="post" class="auth-form">
         <div class="form-group">
             <label for="email">Email</label>

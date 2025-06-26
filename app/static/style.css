@@ -1,4 +1,3 @@
-/* Reset and Base Styles */
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +5,7 @@
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-family: -apple-system, BlinkMacMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     background: linear-gradient(135deg, #2c3e50 0%, #34495e 50%, #2c3e50 100%);
     min-height: 100vh;
     color: white;
@@ -14,7 +13,6 @@ body {
     position: relative;
 }
 
-/* Background Pattern */
 body::before {
     content: '';
     position: fixed;
@@ -28,7 +26,6 @@ body::before {
     z-index: 0;
 }
 
-/* Navigation Styles */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -61,9 +58,12 @@ body::before {
     cursor: pointer;
 }
 
-.nav-links a:hover,
-.nav-links a.active {
-    color: #f39c12;
+.nav-links li.active a {
+    color: #f39c12 !important;
+}
+
+.nav-links a:hover {
+    color: #f39c12; 
 }
 
 .login-btn {
@@ -86,48 +86,47 @@ body::before {
 }
 
 .profile-dropdown {
-  position: relative;
-  display: inline-block;
+    position: relative;
+    display: inline-block;
 }
 
 .profile-icon {
-  font-size: 12px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: white;
-  transition: color 0.3s ease;
+    font-size: 12px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: white;
+    transition: color 0.3s ease;
 }
 
 .profile-icon:hover {
-  color: #f39c12;
+    color: #f39c12;
 }
 
 .dropdown-menu {
-  display: none;
-  position: absolute;
-  right: 0;
-  margin-top: 8px;
-  background-color: #f39c12;
-  font-weight: 600;
-  min-width: 120px;
-  border-radius: 4px;
-  transition: all 0.3s ease;
+    display: none;
+    position: absolute;
+    right: 0;
+    margin-top: 8px;
+    background-color: #f39c12;
+    font-weight: 600;
+    min-width: 120px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
 }
 
 .dropdown-menu a {
-  color: #2c3e50;
-  text-decoration: none;
-  display: block;
-  border-radius: 4px;
-  padding: 10px;
+    color: #2c3e50;
+    text-decoration: none;
+    display: block;
+    border-radius: 4px;
+    padding: 10px;
 }
 
 .dropdown-menu a:hover {
-  background-color: #e67e22;
+    background-color: #e67e22;
 }
 
-/* Hero Section (Home Page) */
 .hero-inner,
 .about-inner {
     display: flex;
@@ -194,7 +193,6 @@ body::before {
     line-height: 1.6;
 }
 
-/* Hero Illustration */
 .hero-illustration {
     flex: 1;
     display: flex;
@@ -293,7 +291,6 @@ body::before {
     border-radius: 0 0 10px 10px;
 }
 
-/* Hand with pen illustration */
 .hand {
     position: absolute;
     right: -50px;
@@ -335,7 +332,6 @@ body::before {
     border-radius: 3px;
 }
 
-/* About Section */
 .about-section {
     display: block;
     align-items: center;
@@ -347,8 +343,6 @@ body::before {
     z-index: 5;
     gap: 60px;
 }
-
-
 
 .about-content {
     flex: 1;
@@ -389,7 +383,6 @@ body::before {
     box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
 }
 
-/* About Page Illustration */
 .about-illustration {
     flex: 1;
     display: flex;
@@ -406,7 +399,6 @@ body::before {
     animation: float 6s ease-in-out infinite;
 }
 
-/* Notepad/Shield Background */
 .notepad-shield {
     position: absolute;
     top: 50%;
@@ -432,7 +424,6 @@ body::before {
     z-index: 3;
 }
 
-/* Content lines on notepad */
 .notepad-content {
     position: absolute;
     top: 30px;
@@ -480,7 +471,6 @@ body::before {
     font-weight: bold;
 }
 
-/* Character/Person */
 .character {
     position: absolute;
     top: 50%;
@@ -545,14 +535,12 @@ body::before {
     border-radius: 2px;
 }
 
-/* Floating Elements */
 .floating-element {
     position: absolute;
     opacity: 0.6;
     animation: floatAround 8s ease-in-out infinite;
 }
 
-/* Hero floating elements */
 .plus {
     color: #f39c12;
     font-size: 20px;
@@ -574,7 +562,6 @@ body::before {
     border-radius: 50%;
 }
 
-/* About floating elements */
 .gear {
     width: 25px;
     height: 25px;
@@ -642,7 +629,6 @@ body::before {
     background: #bdc3c7;
 }
 
-/* Floating element positions */
 .floating-element:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
 .floating-element:nth-child(2) { top: 15%; right: 10%; animation-delay: 1s; }
 .floating-element:nth-child(3) { bottom: 25%; left: 10%; animation-delay: 2s; }
@@ -650,7 +636,6 @@ body::before {
 .floating-element:nth-child(5) { top: 35%; left: 2%; animation-delay: 4s; }
 .floating-element:nth-child(6) { top: 55%; right: 5%; animation-delay: 5s; }
 
-/* Decorative Elements */
 .wave-decoration {
     position: absolute;
     bottom: 0;
@@ -662,7 +647,6 @@ body::before {
     z-index: 1;
 }
 
-/* Animations */
 @keyframes float {
     0%, 100% { 
         transform: perspective(1000px) rotateY(-15deg) rotateX(5deg) translateY(0px); 
@@ -687,7 +671,6 @@ body::before {
     }
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .navbar {
         padding: 1rem;
@@ -780,7 +763,6 @@ body::before {
     display: flex !important;
 }
 
-/*Authentication page*/
 .auth-section {
     display: flex;
     justify-content: center;
@@ -841,37 +823,66 @@ body::before {
 }
 
 .go-back-wrapper {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 50px;
 }
 
 .go-back-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  background-color: #f5f5f5;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: #f5f5f5;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .go-back-btn:hover {
-  background-color: #e0e0e0;
+    background-color: #e0e0e0;
 }
 
 .go-back-btn i {
-  font-size: 17px;
-  color: #2c3e50;
+    font-size: 17px;
+    color: #2c3e50;
 }
 
 .go-back-text {
-  font-size: 15px;
-  color: #2c3e50;
-  font-weight: 500;
+    font-size: 15px;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: #34495e;
+}
+.form-group input[type="text"],
+.form-group textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    box-sizing: border-box;
+    background-color: #fcfcfc;
+    color: #2c3e50;
+    resize: vertical;
+}
+.form-group input[type="text"]:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #f39c12;
+    box-shadow: 0 0 0 4px rgba(243, 156, 18, 0.2);
 }
 
 .form-wrapper {
@@ -996,32 +1007,41 @@ body::before {
     text-decoration: none;
 }
 
-/*MY NOTES*/
-
 .notes-section {
+    min-height: calc(100vh - 80px);
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 140px 100px 60px;
-    max-width: 1500px;
-    margin: 0 auto;
+    padding: 60px 40px;
+    gap: 60px;
     position: relative;
     z-index: 5;
-    gap: 60px;
-    min-height: 0vh;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .main-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 4rem 2rem;
+    padding: 0;
     gap: 3rem;
+    width: 100%;
 }
 
-/* User profile styles (existing code) */
 .user-profile {
     text-align: center;
+}
+
+.notes-wrapper {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
 }
 
 .profile-avatar {
@@ -1048,72 +1068,66 @@ body::before {
     font-style: italic;
 }
 
-/* Notes Container (modified for positioning) */
 .notes-container {
     width: 100%;
     max-width: 800px;
+    height: 400px;
+    overflow-y: auto;
+    position: relative;
     background: rgba(0, 0, 0, 0.2);
     border-radius: 20px;
     padding: 2rem;
     backdrop-filter: blur(10px);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    max-height: 300px;
-    overflow-y: auto;
-    /* Added position: relative; here */
-    position: relative; /* Crucial for positioning the add-button absolutely within it */
-
-    /* --- Scrollbar Styling --- */
-    /* For Firefox */
-    scrollbar-width: thin; /* "auto" or "thin" */
-    scrollbar-color: #f39c12 rgba(255, 255, 255, 0.1); /* thumb color track color */
+    scrollbar-width: thin;
+    scrollbar-color: #f39c12 rgba(255, 255, 255, 0.1);
 }
 
-/* For WebKit browsers (Chrome, Safari, Edge, Opera) (existing code) */
 .notes-container::-webkit-scrollbar {
-    width: 8px; /* width of the scrollbar */
+    width: 8px;
 }
 
 .notes-container::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1); /* color of the track */
-    border-radius: 10px; /* rounded corners for the track */
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
 }
 
 .notes-container::-webkit-scrollbar-thumb {
-    background-color: #f39c12; /* color of the scroll thumb */
-    border-radius: 10px; /* rounded corners for the thumb */
-    border: 2px solid rgba(0, 0, 0, 0); /* creates a little padding around the thumb */
+    background-color: #f39c12;
+    border-radius: 10px;
+    border: 2px solid rgba(0, 0, 0, 0);
 }
 
 .notes-container::-webkit-scrollbar-thumb:hover {
-    background-color: #e67e22; /* darker shade on hover */
+    background-color: #e67e22;
 }
-/* --- End Scrollbar Styling --- */
-
 
 .notes-header {
     font-size: 1.3rem;
     font-weight: 600;
     color: #f39c12;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    width: 100%;
 }
 
-/* Note item styles (existing code) */
 .note-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* Adjusted padding to distribute space better */
-    padding: 1rem; /* Uniform padding */
+    padding: 1rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     transition: all 0.3s ease;
-    flex-wrap: nowrap; /* Prevent note-item itself from wrapping, let content wrap internally */
-    width: 100%; /* Ensure each note item takes full available width */
+    flex-wrap: nowrap;
+    width: 100%;
 }
 
 .note-item:hover {
     background: rgba(255, 255, 255, 0.05);
-    margin: 0; /* Removed negative margin as padding is now uniform */
-    /* padding: 1rem; Keep this from the above, if you want hover to slightly expand */
+    margin: 0;
     border-radius: 10px;
 }
 
@@ -1123,15 +1137,15 @@ body::before {
 
 .note-content {
     display: flex;
-    flex-direction: column; /* Stacks title and description */
+    flex-direction: column;
     gap: 0.5rem;
     cursor: pointer;
-    flex: 1; /* Allows note-content to take available space */
-    min-width: 0; /* Important for flex items to shrink correctly */
-    overflow-wrap: break-word; /* For breaking very long words */
-    word-wrap: break-word; /* Fallback for older browsers */
-    white-space: normal; /* Ensures text wraps naturally */
-    padding-right: 1rem; /* Add some space between content and actions */
+    flex: 1;
+    min-width: 0;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    white-space: normal;
+    padding-right: 1rem;
 }
 
 .note-title {
@@ -1150,9 +1164,9 @@ body::before {
 .note-actions {
     display: flex;
     align-items: center;
-    gap: 0.8rem; /* Increased gap between delete button and arrow */
-    flex-shrink: 0; /* Prevents actions from shrinking */
-    padding-left: 0.5rem; /* Add some space if content gets close */
+    gap: 0.8rem;
+    flex-shrink: 0;
+    padding-left: 0.5rem;
 }
 
 .delete-btn {
@@ -1166,7 +1180,7 @@ body::before {
     display: flex;
     align-items: center;
     justify-content: center;
-    line-height: 1; /* Ensures icon is centered if it's a character */
+    line-height: 1;
 }
 
 .delete-btn:hover {
@@ -1179,7 +1193,7 @@ body::before {
     font-size: 1.2rem;
     opacity: 0.7;
     transition: all 0.3s ease;
-    line-height: 1; /* Helps vertical alignment */
+    line-height: 1;
 }
 
 .note-item:hover .note-arrow {
@@ -1187,33 +1201,28 @@ body::before {
     transform: translateX(5px);
 }
 
-/* ADD Button (modified for new position) */
 .add-button {
-    position: absolute; /* Changed to absolute */
-    top: 25rem;          /* Adjusted to move it into the top-right corner of .notes-container */
-    /* right: 0rem;        Adjusted for horizontal positioning relative to the container's right edge */
-    left: 65rem;
-
     background: #f39c12;
     color: white;
     border: none;
     border-radius: 12px;
-    padding: 1rem 1.5rem;
-    font-size: 1rem;
+    padding: 0.8rem 1.2rem;
+    font-size: 0.9rem;
     font-weight: 600;
     cursor: pointer;
-    box-shadow: 0 4px 20px rgba(243, 156, 18, 0.4);
+    box-shadow: 0 4px 10px rgba(243, 156, 18, 0.3);
     transition: all 0.3s ease;
     display: flex;
     align-items: center;
-    gap: 0rem;
-    z-index: 100; /* Ensures it stays on top of other elements */
+    gap: 0.4rem;
+    z-index: 100;
+    flex-shrink: 0;
 }
 
 .add-button:hover {
     background: #e67e22;
     transform: translateY(-2px);
-    box-shadow: 0 6px 25px rgba(243, 156, 18, 0.6);
+    box-shadow: 0 6px 15px rgba(243, 156, 18, 0.4);
 }
 
 .icon {
@@ -1222,7 +1231,6 @@ body::before {
     fill: currentColor;
 }
 
-/* Media queries (existing code) */
 @media (max-width: 768px) {
     .navbar {
         padding: 1rem;
@@ -1241,13 +1249,13 @@ body::before {
     }
 
     .note-content {
-        flex-direction: column; /* This was already in your media query, good */
+        flex-direction: column;
         gap: 0.5rem;
-        padding-right: 0.5rem; /* Adjust padding for smaller screens */
+        padding-right: 0.5rem;
     }
 
     .note-actions {
-        padding-left: 0; /* No extra padding on smaller screens */
+        padding-left: 0;
     }
 }
 
@@ -1264,71 +1272,22 @@ body::before {
 }
 
 .alert-success {
-    background-color: #2ecc71; /* Green */
+    background-color: #2ecc71;
 }
 
 .alert-danger {
-    background-color: #e74c3c; /* Red */
+    background-color: #e74c3c;
 }
 
 .alert-warning {
-    background-color: #f1c40f; /* Yellow */
+    background-color: #f1c40f;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.custom-body  {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #2c3e50;
-    color: white;
-    overflow-x: hidden;
-}
-
-.custom-header {
-    background-color: #34495e;
-    padding: 10px 10px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    text-align: center;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* untuk center horizontal */
-    gap: 4px; /* jarak antar elemen */
-}
-
-.header h1 {
-    color: #f39c12;
-    font-size: 35px; /* sebelumnya 24px */
-    font-weight: 700;
-    margin-bottom: 1px;
-}
-
-.header .subtitle {
-    color: #bdc3c7;
-    font-size: 20px; /* sebelumnya 12px */
-    margin-bottom: 2px;
-}
-
-.header .tagline {
-    color: #95a5a6;
-    font-size: 16px; /* sebelumnya 10px */
-}
-
-/* Editable Header Styles */
 .custom-editable-title {
     color: #f39c12;
     font-size: 40px;
     font-weight: 600;
-    margin-bottom: 5px;
+    margin-bottom: 0;
     outline: none;
     border: 2px solid transparent;
     padding: 2px 8px;
@@ -1337,6 +1296,40 @@ body::before {
     min-height: 32px;
     display: inline-block;
     min-width: 200px;
+}
+
+.custom-editable-title:hover {
+    border-color: rgba(243, 156, 18, 0.3);
+    background-color: rgba(243, 156, 18, 0.1);
+}
+
+.custom-editable-title:focus {
+    border-color: #f39c12;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.custom-header .close-btn:hover {
+    background-color: #c0392b;
+}
+
+.edit-btn {
+    color: white;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+.edit-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
 }
 
 .editable-title:hover {
@@ -1349,20 +1342,6 @@ body::before {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-.editable-subtitle {
-    color: #bdc3c7;
-    font-size: 12px;
-    margin-bottom: 2px;
-    outline: none;
-    border: 2px solid transparent;
-    padding: 2px 8px;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-    min-height: 20px;
-    display: inline-block;
-    min-width: 150px;
-}
-
 .editable-subtitle:hover {
     border-color: rgba(189, 195, 199, 0.3);
     background-color: rgba(189, 195, 199, 0.1);
@@ -1373,75 +1352,90 @@ body::before {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-.editable-tagline {
-    color: #95a5a6;
-    font-size: 10px;
+.custommain-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1; 
+    min-height: calc(100vh - 80px);
+    padding: 40px 20px;
+    width: 100%; 
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.content-area {
+    background-color: #FFFDE3;
+    min-height: 500px;
+    height: auto;
+    border-radius: 2vh;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    padding: 0;
+    color: #2c3e50;
+    position: relative;
+    margin: 0;
+    width: 100%;
+    max-width: 900px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.note-editor {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    height: 100%;
+}
+
+.note-editor-title {
+    color: #f39c12;
+    font-size: 35px;
+    font-weight: 600;
     outline: none;
     border: 2px solid transparent;
     padding: 2px 8px;
     border-radius: 4px;
     transition: all 0.3s ease;
-    min-height: 18px;
-    display: inline-block;
-    min-width: 100px;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
 }
 
-.editable-tagline:hover {
-    border-color: rgba(149, 165, 166, 0.3);
-    background-color: rgba(149, 165, 166, 0.1);
+.note-editor-title {
+    color: #f39c12;
+    font-size: 35px;
+    font-weight: 600;
+    outline: none;
+    border: 2px solid transparent;
+    padding: 2px 8px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 20px;
 }
 
-.editable-tagline:focus {
-    border-color: #95a5a6;
+.note-editor-title:hover {
+    border-color: rgba(243, 156, 18, 0.3);
+    background-color: rgba(243, 156, 18, 0.1);
+}
+
+.note-editor-title:focus {
+    border-color: #f39c12;
     background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Placeholder effect for contenteditable */
-[contenteditable]:empty:before {
-    content: attr(data-placeholder);
-    color: rgba(255, 255, 255, 0.5);
-    font-style: italic;
-}
-
-.sidebar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 250px;
-    height: 100vh;
-    background-color: #2c3e50;
-    padding-top: 100px;
-    transition: transform 0.3s ease;
-    z-index: 900;
-}
-
-.custommain-content {
-    position: center;
-    margin-left: 350px;
-    margin-right: 350px;
-    margin-top: 80px;
-    padding: 80px;
-    min-height: calc(100vh - 80px);
-    background-color: #2c3e50;
-}
-
-.content-area {
-    background-color: #FFFDE3;
-    min-height: calc(70vh);
-    border-radius: 2vh;
-    box-shadow: none;
-    padding: 0;
-    color: #2c3e50;
-    position: relative;
-    margin: 0;
-}
-
-.close-btn {
+.close-btn { 
     position: absolute;
     top: 15px;
-    left: 15px;
-    width: 30px;
-    height: 30px;
+    right: 15px;
+    width: 35px;
+    height: 35px;
     background-color: #7f8c8d;
     border: none;
     border-radius: 50%;
@@ -1450,108 +1444,40 @@ body::before {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 18px;
+    font-size: 20px;
     transition: background-color 0.3s ease;
     z-index: 10;
 }
 
-.note-editor {
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    padding: 60px 40px 40px 40px;
+.close-btn:hover {
+    background-color: #95a5a6;
 }
 
-
-.customnote-content {
+.customnote-content { 
     flex: 1;
     border: none;
     outline: none;
-    resize: none;
+    resize: vertical;
     font-size: 16px;
     line-height: 1.6;
     color: #2c3e50;
     background: transparent;
-    padding: 0px 0;
-    min-height: 400px;
+    padding: 0px;
+    min-height: 300px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow-y: auto;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .customnote-content::placeholder {
     color: #bdc3c7;
 }
 
-.customnote-actions {
-    display: flex;
-    gap: 10px;
-    padding-top: 20px;
-    border-top: 1px solid #ecf0f1;
-    margin-top: 20px;
+.customnote-content::placeholder {
+    color: #bdc3c7;
 }
 
-.btn {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.custombtn-primary {
-    background-color: #3498db;
-    color: white;
-}
-
-.custombtn-primary:hover {
-    background-color: #2980b9;
-}
-
-.custombtn-secondary {
-    background-color: #95a5a6;
-    color: white;
-}
-
-.custombtn-secondary:hover {
-    background-color: #7f8c8d;
-}
-
-.customclose-btn:hover {
-    background-color: #95a5a6;
-}
-
-/* Overlay for mobile */
-.overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
-    z-index: 800;
-}
-
-/* Placeholder content styling */
-.placeholder-content {
-    text-align: center;
-    color: #7f8c8d;
-    padding: 60px 20px;
-}
-
-.placeholder-content h2 {
-    margin-bottom: 20px;
-    color: #34495e;
-}
-
-.placeholder-content p {
-    line-height: 1.6;
-    max-width: 600px;
-    margin: 0 auto 20px auto;
-}
-
-/* Responsive Design */
 @media (max-width: 768px) {
     .sidebar {
         transform: translateX(-100%);
@@ -1587,5 +1513,3 @@ body::before {
         display: block;
     }
 }
-
-
