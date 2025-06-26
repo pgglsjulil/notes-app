@@ -128,11 +128,44 @@ body::before {
 }
 
 /* Hero Section (Home Page) */
+.hero-inner,
+.about-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+.hero,
+.about-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 40px;
+    flex-direction: row-reverse;
+    gap: 60px;
+}
+
+.about-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 40px;
+    flex-direction: row;
+    gap: 60px;
+}
+
 .hero {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 240px 40px 60px;
+    padding: 1px 40px 60px;
     max-width: 1200px;
     margin: 0 auto;
     position: relative;
@@ -304,7 +337,7 @@ body::before {
 
 /* About Section */
 .about-section {
-    display: none;
+    display: block;
     align-items: center;
     justify-content: space-between;
     padding: 140px 100px 60px;
@@ -314,6 +347,8 @@ body::before {
     z-index: 5;
     gap: 60px;
 }
+
+
 
 .about-content {
     flex: 1;
@@ -1552,4 +1587,5 @@ body::before {
         display: block;
     }
 }
+
 
