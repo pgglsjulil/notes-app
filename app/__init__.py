@@ -11,6 +11,9 @@ def create_app():
 
     db.init_app(app)
     login_manager.init_app(app)
+    login_manager.login_view = 'main.login' 
+    login_manager.login_message = "Harap login untuk mengakses halaman ini."
+    login_manager.login_message_category = "info"
 
     from app.models import User
 
