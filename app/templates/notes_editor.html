@@ -15,7 +15,7 @@
             <div class="note-editor">
                 <form id="noteForm" method="POST" action="
                     {% if note is defined and note %}
-                        {{ url_for('main.create_note', note_id=note.id) }}
+                        {{ url_for('main.edit_note', note_id=note.id) }}
                     {% else %}
                         {{ url_for('main.create_note') }}
                     {% endif %}
@@ -35,7 +35,6 @@
                     <textarea id="content" name="content" class="customnote-content"
                               placeholder="Mulai menulis catatan Anda di sini..." 
                               rows="15" required>{% if note is defined and note %}{{ note.content }}{% else %}{% endif %}</textarea>
-
                 </form>
             </div>
         </div>
@@ -96,7 +95,7 @@
                         console.log('Note saved successfully:', data);
                         isDirty = false; 
                         if (initialNoteId === '' && data.note_id) { 
-                            noteForm.action = "{{ url_for('main.create_note', note_id=0) }}".replace('0', data.note_id);
+                            noteForm.action = "{{ url_for('main.edit_note', note_id=0) }}".replace('0', data.note_id);
                         }
                         return true; 
                     } else {
