@@ -13,9 +13,10 @@
     <div class="custommain-content">
         <div class="content-area">
             <div class="note-editor">
+                {# PASTIKAN ACTION FORM INI BENAR-BENAR DINAMIS #}
                 <form id="noteForm" method="POST" action="
                     {% if note is defined and note %}
-                        {{ url_for('main.create_note', note_id=note.id) }}
+                        {{ url_for('main.edit_note', note_id=note.id) }}
                     {% else %}
                         {{ url_for('main.create_note') }}
                     {% endif %}
@@ -36,6 +37,7 @@
                               placeholder="Mulai menulis catatan Anda di sini..." 
                               rows="15" required>{% if note is defined and note %}{{ note.content }}{% else %}{% endif %}</textarea>
 
+                    {# Tombol Save Manual telah dihapus #}
                 </form>
             </div>
         </div>
@@ -64,7 +66,7 @@
                 const currentTitle = displayTitle.textContent.trim(); 
                 const currentContent = contentTextarea.value.trim();
 
-                titleInput.value = currentTitle; 
+                titleInput.value = currentTitle; // Update hidden input before form data is created
 
                 if (!currentTitle || !currentContent) {
                     alert('Title and content cannot be empty!'); 
@@ -95,8 +97,9 @@
                         const data = await response.json(); 
                         console.log('Note saved successfully:', data);
                         isDirty = false; 
+                        // Ini adalah bagian KRITIS: hanya update form.action jika itu adalah CATATAN BARU yang baru dibuat
                         if (initialNoteId === '' && data.note_id) { 
-                            noteForm.action = "{{ url_for('main.create_note', note_id=0) }}".replace('0', data.note_id);
+                            noteForm.action = "{{ url_for('main.edit_note', note_id=0) }}".replace('0', data.note_id);
                         }
                         return true; 
                     } else {
