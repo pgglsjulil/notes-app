@@ -831,6 +831,7 @@ body::before {
 
 .go-back-btn {
     display: flex;
+    text-decoration: none;
     align-items: center;
     justify-content: center;
     padding: 10px;
@@ -1326,6 +1327,14 @@ body::before {
 .edit-btn:hover {
     background: rgba(255, 255, 255, 0.1);
     transform: scale(1.1);
+}
+
+.blank-note {
+    color: #f39c12;
+}
+
+.blank-note:hover {
+    color: #e67e22;
 }
 
 .editable-title:hover {

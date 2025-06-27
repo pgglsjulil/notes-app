@@ -46,7 +46,7 @@
                             </div>
                         {% endfor %}
                     {% else %}
-                        <p>No notes yet! <a href="{{ url_for('main.create_note') }}">Create your first note.</a></p>
+                        <p>No notes yet! <a href="{{ url_for('main.create_note') }}" class = "blank-note">Create your first note.</a></p>
                     {% endif %}
                 </div>
             </div>
