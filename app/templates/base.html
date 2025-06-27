@@ -19,7 +19,7 @@
                 {# Create Note Link #}
                 <li {% if request.endpoint == 'main.create_note' %}class="active"{% endif %}><a href="{{ url_for('main.create_note') }}"><i class="fas fa-plus"></i> Create Note</a></li>
                 {# Logout Link #}
-                <li><a href="{{ url_for('main.logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                <li><a href="{{ url_for('main.logout') }}" onclick="return confirmLogout(event)"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
             {% else %}
                 {# Login Link #}
                 <li {% if request.endpoint == 'main.login' %}class="active"{% endif %}><a href="{{ url_for('main.login') }}"><i class="fas fa-sign-in-alt"></i> Login</a></li>
@@ -29,6 +29,16 @@
         </ul>
     </nav>
 
+    <script>
+        function confirmLogout(event) {
+            const confirmResult = confirm("Are you sure you want to log out?");
+            if (!confirmResult) {
+                event.preventDefault(); 
+                return false;
+            }
+            return true;
+        }
+    </script>
     {% block main_content %}{% endblock %} 
 
 </body>
