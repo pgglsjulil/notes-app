@@ -72,7 +72,7 @@
 
                 const initialNoteId = "{{ note.id if note is defined and note else '' }}";
                 const initialNoteTitle = "{{ note.title if note is defined and note else '' }}";
-                const initialNoteContent = "{{ note.content if note is defined and note else '' }}";
+                const initialNoteContent = `{{ note.content | replace('\\', '\\\\') | replace('\n', '\\n') if note is defined and note else '' }}`;
 
                 if (!isDirty && (initialNoteId === '' || (currentTitle === initialNoteTitle && currentContent === initialNoteContent))) {
                     console.log("No significant changes, not saving.");
@@ -136,7 +136,7 @@
             });
 
             const initialTitleFromJinja = "{{ note.title if note is defined and note else '' }}";
-            const initialContentFromJinja = "{{ note.content if note is defined and note else '' }}";
+            const initialContentFromJinja = `{{ note.content | replace('\\', '\\\\') | replace('\n', '\\n') if note is defined and note else '' }}`;
 
             if (initialTitleFromJinja.trim() !== '') {
                 displayTitle.textContent = initialTitleFromJinja;
