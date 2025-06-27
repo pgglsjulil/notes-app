@@ -135,7 +135,7 @@ def edit_note(note_id):
             if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
                 return jsonify({'success': False, 'message': 'Title and content cannot be empty!'}), 400
             flash('Title and content cannot be empty!', 'danger')
-            return redirect(url_for('main.create_note', note_id=note.id))
+            return redirect(url_for('main.edit_note', note_id=note.id))
 
         note.title = title
         note.content = content
