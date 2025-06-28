@@ -1,9 +1,11 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask_wtf.csrf import CSRFProtect
 
 db = SQLAlchemy()
 login_manager = LoginManager()
+csrf = CSRFProtect()
 
 def create_app():
     app = Flask(__name__)
@@ -14,6 +16,8 @@ def create_app():
     login_manager.login_view = 'main.login' 
     login_manager.login_message = "Harap login untuk mengakses halaman ini."
     login_manager.login_message_category = "info"
+
+    csrf.init_app(app)
 
     from app.models import User
 

@@ -20,6 +20,7 @@
                         {{ url_for('main.create_note') }}
                     {% endif %}
                 ">
+                    {{ form.csrf_token }}
                     <button type="button" class="close-btn" id="closeButton">
                         &times; 
                     </button>
@@ -29,12 +30,12 @@
                     </h1>
 
                     <input type="text" id="title" name="title" 
-                           value="{% if note is defined and note %}{{ note.title }}{% else %}{% endif %}" 
+                           value="{% if form.title.data %}{{ form.title.data }}{% elif note is defined and note %}{{ note.title }}{% else %}{% endif %}" 
                            placeholder="Enter note title" required style="display: none;">
 
                     <textarea id="content" name="content" class="customnote-content"
                               placeholder="Mulai menulis catatan Anda di sini..." 
-                              rows="15" required>{% if note is defined and note %}{{ note.content }}{% else %}{% endif %}</textarea>
+                              rows="15" required>{% if form.content.data %}{{ form.content.data }}{% elif note is defined and note %}{{ note.content }}{% else %}{% endif %}</textarea>
                 </form>
             </div>
         </div>
