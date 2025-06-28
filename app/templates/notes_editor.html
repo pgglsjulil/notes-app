@@ -27,7 +27,7 @@ Create New Note
                 </button>
 
                 <h1 class="note-editor-title" id="displayTitle" contenteditable="true" style="margin-bottom: 20px;">
-                    {% if note is defined and note %}{{ note.title }}{% else %}Judul Catatan{% endif %}
+                    {% if note is defined and note %}{{ note.title }}{% else %}Note Title{% endif %}
                 </h1>
 
                 <input type="text" id="title" name="title"
@@ -35,7 +35,7 @@ Create New Note
                     placeholder="Enter note title" required style="display: none;">
 
                 <textarea id="content" name="content" class="customnote-content"
-                    placeholder="Mulai menulis catatan Anda di sini..." rows="15"
+                    placeholder="Start writing your note here..." rows="15"
                     required>{% if form.content.data %}{{ form.content.data }}{% elif note is defined and note %}{{ note.content }}{% else %}{% endif %}</textarea>
             </form>
         </div>
@@ -57,7 +57,7 @@ Create New Note
             titleInput.value = displayTitle.textContent.trim();
         });
         titleInput.addEventListener('input', () => {
-            displayTitle.textContent = titleInput.value.trim() || 'Judul Catatan';
+            displayTitle.textContent = titleInput.value.trim() || 'Note Title';
         });
         contentTextarea.addEventListener('input', () => { isDirty = true; });
 
@@ -144,7 +144,7 @@ Create New Note
             displayTitle.textContent = initialTitleFromJinja;
             titleInput.value = initialTitleFromJinja;
         } else {
-            displayTitle.textContent = 'Judul Catatan';
+            displayTitle.textContent = 'Note Title';
             titleInput.value = '';
         }
     });
