@@ -7,15 +7,16 @@ db = SQLAlchemy()
 login_manager = LoginManager()
 csrf = CSRFProtect()
 
+
 def create_app():
     app = Flask(__name__)
     app.config.from_pyfile('../config.py')
 
     db.init_app(app)
     login_manager.init_app(app)
-    login_manager.login_view = 'main.login' 
-    login_manager.login_message = "You must be logged in to access this page."
-    login_manager.login_message_category = "danger"
+    login_manager.login_view = 'main.login'
+    login_manager.login_message = 'You must be logged in to access this page.'
+    login_manager.login_message_category = 'danger'
 
     csrf.init_app(app)
 
@@ -26,6 +27,7 @@ def create_app():
         return User.query.get(int(user_id))
 
     from app.routes import main as main_blueprint
+
     app.register_blueprint(main_blueprint)
 
     return app

@@ -1,99 +1,104 @@
-{% extends "base.html" %} 
+{% extends "base.html" %}
 
-{% block title %}My Notes{% endblock %} 
+{% block title %}My Notes{% endblock %}
 
 {% block main_content %}
-    <section class="notes-section" style="width: 100%;"> 
-        <div class="main-content">
-            <div class="user-profile">
-                <div class="profile-avatar">
-                    <svg class="icon" viewBox="0 0 24 24" fill="currentColor" style="width: 40px; height: 40px;">
-                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                        <circle cx="12" cy="7" r="4"/>
-                    </svg>
-                </div>
-                <div class="username">{{ current_user.username }}</div>
-                <div class="user-email">{{ current_user.email }}</div>
+<section class="notes-section" style="width: 100%;">
+    <div class="main-content">
+        <div class="user-profile">
+            <div class="profile-avatar">
+                <svg class="icon" viewBox="0 0 24 24" fill="currentColor" style="width: 40px; height: 40px;">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                </svg>
             </div>
+            <div class="username">{{ current_user.username }}</div>
+            <div class="user-email">{{ current_user.email }}</div>
+        </div>
 
-            <div class="notes-wrapper"> 
-                <div class="notes-header"> 
-                    <h4>Recent Notes</h4>
-                </div> 
-                <div class="notes-container"> 
-                    {% if notes %} 
-                        {% for note in notes %} 
-                            <div class="note-item" data-view-url="{{ url_for('main.view_note', note_id=note.id) }}"> 
-                                <div class="note-content">
-                                    <div class="note-title">{{ note.title }}</div>
-                                    <div class="note-description">{{ note.content[:150] }}{% if note.content|length > 150 %}...{% endif %}</div> 
-                                    <div class="note-date">{{ note.date_created.strftime('%Y-%m-%d %H:%M') }}</div>
-                                </div>
-                                <div class="note-actions">
-                                    <a href="{{ url_for('main.edit_note', note_id=note.id) }}" class="edit-btn" title="Edit note">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                    <form action="{{ url_for('main.delete_note', note_id=note.id) }}" method="POST" style="display:inline;">
-                                        {{ form.csrf_token }}
-                                        <button type="submit" class="delete-btn" title="Delete note" onclick="event.stopPropagation(); return confirm('Are you sure you want to delete this note?');">
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                                <path d="M3 6h18m-2 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>
-                                                <line x1="10" y1="11" x2="10" y2="17"/>
-                                                <line x1="14" y1="11" x2="14" y2="17"/>
-                                            </svg>
-                                        </button>
-                                    </form>
-                                </div>
-                            </div>
-                        {% endfor %}
-                    {% else %}
-                        <p>No notes yet! <a href="{{ url_for('main.create_note') }}" class = "blank-note">Create your first note.</a></p>
-                    {% endif %}
+        <div class="notes-wrapper">
+            <div class="notes-header">
+                <h4>Recent Notes</h4>
+            </div>
+            <div class="notes-container">
+                {% if notes %}
+                {% for note in notes %}
+                <div class="note-item" data-view-url="{{ url_for('main.view_note', note_id=note.id) }}">
+                    <div class="note-content">
+                        <div class="note-title">{{ note.title }}</div>
+                        <div class="note-description">{{ note.content[:150] }}{% if note.content|length > 150 %}...{%
+                            endif %}</div>
+                        <div class="note-date">{{ note.date_created.strftime('%Y-%m-%d %H:%M') }}</div>
+                    </div>
+                    <div class="note-actions">
+                        <a href="{{ url_for('main.edit_note', note_id=note.id) }}" class="edit-btn" title="Edit note">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <form action="{{ url_for('main.delete_note', note_id=note.id) }}" method="POST"
+                            style="display:inline;">
+                            {{ form.csrf_token }}
+                            <button type="submit" class="delete-btn" title="Delete note"
+                                onclick="event.stopPropagation(); return confirm('Are you sure you want to delete this note?');">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M3 6h18m-2 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
+                                    <line x1="10" y1="11" x2="10" y2="17" />
+                                    <line x1="14" y1="11" x2="14" y2="17" />
+                                </svg>
+                            </button>
+                        </form>
+                    </div>
                 </div>
+                {% endfor %}
+                {% else %}
+                <p>No notes yet! <a href="{{ url_for('main.create_note') }}" class="blank-note">Create your first
+                        note.</a></p>
+                {% endif %}
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <script>
-        const profileBtn = document.getElementById('profile-btn');
-        const dropdownMenu = document.getElementById('dropdown-menu');
+<script>
+    const profileBtn = document.getElementById('profile-btn');
+    const dropdownMenu = document.getElementById('dropdown-menu');
 
-        profileBtn.addEventListener('click', function (event) {
-            event.stopPropagation();
-            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
-        });
+    profileBtn.addEventListener('click', function (event) {
+        event.stopPropagation();
+        dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+    });
 
-        window.addEventListener('click', function () {
-            dropdownMenu.style.display = 'none';
-        });
+    window.addEventListener('click', function () {
+        dropdownMenu.style.display = 'none';
+    });
 
-        document.addEventListener('DOMContentLoaded', function() {
-            const noteItems = document.querySelectorAll('.note-item');
-            noteItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    const viewUrl = this.dataset.viewUrl; 
-                    if (viewUrl) {
-                        window.location.href = viewUrl;
-                    }
-                });
-            });
-
-            const addNoteButton = document.getElementById('addNoteButton');
-            if (addNoteButton) {
-                addNoteButton.addEventListener('click', function() {
-                    const createUrl = this.dataset.createUrl; 
-                    if (createUrl) {
-                        window.location.href = createUrl;
-                    }
-                });
-            }
-
-            if (window.location.hash === '#notes') {
-                const notesSection = document.querySelector('.notes-section');
-                if (notesSection) {
-                    notesSection.scrollIntoView({ behavior: 'smooth' });
+    document.addEventListener('DOMContentLoaded', function () {
+        const noteItems = document.querySelectorAll('.note-item');
+        noteItems.forEach(item => {
+            item.addEventListener('click', function () {
+                const viewUrl = this.dataset.viewUrl;
+                if (viewUrl) {
+                    window.location.href = viewUrl;
                 }
-            }
+            });
         });
-    </script>
+
+        const addNoteButton = document.getElementById('addNoteButton');
+        if (addNoteButton) {
+            addNoteButton.addEventListener('click', function () {
+                const createUrl = this.dataset.createUrl;
+                if (createUrl) {
+                    window.location.href = createUrl;
+                }
+            });
+        }
+
+        if (window.location.hash === '#notes') {
+            const notesSection = document.querySelector('.notes-section');
+            if (notesSection) {
+                notesSection.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    });
+</script>
 {% endblock %}

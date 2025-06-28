@@ -13,7 +13,6 @@ Create New Note
 <div class="custommain-content">
     <div class="content-area">
         <div class="note-editor">
-            <div>CTRL + S to save the note</div>
             <form id="noteForm" method="POST" action="
                     {% if note is defined and note %}
                         {{ url_for('main.edit_note', note_id=note.id) }}

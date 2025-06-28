@@ -3,68 +3,69 @@
 {% block title %}Welcome to Notemaker{% endblock %}
 
 {% block main_content %}
-    <section class="hero">
-        <div class="hero-inner">
-            <div class="hero-illustration">
-                <div class="laptop-container">
-                    <div class="laptop">
-                        <div class="screen-content">
-                            <div class="browser-bar">
-                                <div class="browser-dot dot-red"></div>
-                                <div class="browser-dot dot-yellow"></div>
-                                <div class="browser-dot dot-green"></div>
-                            </div>
-                            <div class="content-lines">
-                                <div class="content-line"></div>
-                                <div class="content-line"></div>
-                                <div class="content-line"></div>
-                                <div class="content-line"></div>
-                            </div>
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero-illustration">
+            <div class="laptop-container">
+                <div class="laptop">
+                    <div class="screen-content">
+                        <div class="browser-bar">
+                            <div class="browser-dot dot-red"></div>
+                            <div class="browser-dot dot-yellow"></div>
+                            <div class="browser-dot dot-green"></div>
                         </div>
-                        <div class="keyboard"></div>
+                        <div class="content-lines">
+                            <div class="content-line"></div>
+                            <div class="content-line"></div>
+                            <div class="content-line"></div>
+                            <div class="content-line"></div>
+                        </div>
                     </div>
-                    <div class="hand">
-                        <div class="hand-shape"></div>
-                        <div class="pen"></div>
-                    </div>
+                    <div class="keyboard"></div>
                 </div>
-            </div>
-
-            <div class="hero-content">
-                <h1>Hello 👋</h1>
-                <h2>What’s on your mind today?</h2>
-                <p>Start capturing your thoughts and ideas right now.</p>
-                <a href="{{ url_for('main.register') }}"><button class="get-started-btn">Get Started</button></a>
-            </div>
-        </div>
-    </section>
-
-    <section class="about-section">
-        <div class="about-inner">
-            <div class="about-content">
-                <h1>With built-in lock features, your notes stay safe and accessible only to you.</h1>
-                <p>We believe your thoughts, ideas, and personal plans deserve a protected space — free from prying eyes. Notemaker is your private digital notebook, where you can write freely and securely.</p>
-            </div>
-
-            <div class="about-illustration">
-                <div class="illustration-container">
-                    <div class="notepad-shield">
-                        <div class="notepad-content">
-                            <div class="note-line"></div>
-                            <div class="note-line"></div>
-                            <div class="note-line"></div>
-                            <div class="note-line"></div>
-                        </div>
-                        <div class="checkmarks">
-                            <div class="checkmark"></div>
-                            <div class="checkmark"></div>
-                        </div>
-                    </div>
+                <div class="hand">
+                    <div class="hand-shape"></div>
+                    <div class="pen"></div>
                 </div>
             </div>
         </div>
-    </section>
 
-    <div class="wave-decoration"></div>
+        <div class="hero-content">
+            <h1>Hello 👋</h1>
+            <h2>What’s on your mind today?</h2>
+            <p>Start capturing your thoughts and ideas right now.</p>
+            <a href="{{ url_for('main.register') }}"><button class="get-started-btn">Get Started</button></a>
+        </div>
+    </div>
+</section>
+
+<section class="about-section">
+    <div class="about-inner">
+        <div class="about-content">
+            <h1>With built-in lock features, your notes stay safe and accessible only to you.</h1>
+            <p>We believe your thoughts, ideas, and personal plans deserve a protected space — free from prying eyes.
+                Notemaker is your private digital notebook, where you can write freely and securely.</p>
+        </div>
+
+        <div class="about-illustration">
+            <div class="illustration-container">
+                <div class="notepad-shield">
+                    <div class="notepad-content">
+                        <div class="note-line"></div>
+                        <div class="note-line"></div>
+                        <div class="note-line"></div>
+                        <div class="note-line"></div>
+                    </div>
+                    <div class="checkmarks">
+                        <div class="checkmark"></div>
+                        <div class="checkmark"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="wave-decoration"></div>
 
 {% endblock %}

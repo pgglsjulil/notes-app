@@ -1,18 +1,18 @@
-{% extends "base.html" %} 
+{% extends "base.html" %}
 
 {% block main_content %}
-    <main class="auth-section">
-        <div class="auth-container">
-            <div class="auth-info-panel">
-                <div class="info-content">
-                    <h2>Notemaker</h2>
-                    <p class="tagline">Your Ideas. Organized. Anywhere. Anytime.</p>
-                </div>
-            </div>
-
-            <div class="auth-form-panel">
-                {% block auth_form_content %}{% endblock %} 
+<main class="auth-section">
+    <div class="auth-container">
+        <div class="auth-info-panel">
+            <div class="info-content">
+                <h2>Notemaker</h2>
+                <p class="tagline">Your Ideas. Organized. Anywhere. Anytime.</p>
             </div>
         </div>
-    </main>
+
+        <div class="auth-form-panel">
+            {% block auth_form_content %}{% endblock %}
+        </div>
+    </div>
+</main>
 {% endblock %}
