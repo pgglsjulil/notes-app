@@ -16,7 +16,6 @@ from flask_login import current_user, login_user, logout_user, login_required
 main = Blueprint('main', __name__)
 
 
-
 @main.route('/')
 def landing_page():
     if current_user.is_authenticated:
@@ -25,7 +24,7 @@ def landing_page():
 
 
 @main.route('/register', methods=['GET', 'POST'])
-@limiter.limit("8 per minute")
+@limiter.limit('8 per minute')
 def register():
     if current_user.is_authenticated:
         return redirect(url_for('main.home'))
@@ -60,7 +59,7 @@ def register():
 
 
 @main.route('/login', methods=['GET', 'POST'])
-@limiter.limit("8 per minute")
+@limiter.limit('8 per minute')
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('main.home'))
@@ -82,7 +81,7 @@ def login():
                 return redirect(url_for('main.login'))
 
             login_user(user)
-            log_action(user.id, "Login berhasil")
+            log_action(user.id, 'Login berhasil')
             # flash('Login successful!', 'success')
             return redirect(url_for('main.home'))
         else:
@@ -92,10 +91,10 @@ def login():
 
 
 @main.route('/logout')
-@limiter.limit("2 per minute")
+@limiter.limit('2 per minute')
 @login_required
 def logout():
-    log_action(current_user.id, "Logout")
+    log_action(current_user.id, 'Logout')
     logout_user()
     # flash('You have been logged out.', 'info')
     return redirect(url_for('main.landing_page'))
@@ -110,7 +109,7 @@ def home():
 
 
 @main.route('/create_note', methods=['GET', 'POST'])
-@limiter.limit("4 per minute")
+@limiter.limit('4 per minute')
 @login_required
 def create_note():
     form = NoteForm()
@@ -133,7 +132,7 @@ def create_note():
 
             new_note = Note(title=title, content=content, author=current_user)
             db.session.add(new_note)
-            log_action(current_user.id, f"Menambahkan catatan: {title}")
+            log_action(current_user.id, f'Menambahkan catatan: {title}')
             db.session.commit()
 
             if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
@@ -154,20 +153,8 @@ def create_note():
     return render_template('notes_editor.html', form=form)
 
 
-@main.route('/note/<int:note_id>')
-@login_required
-def view_note(note_id):
-    note = Note.query.get_or_404(note_id)
-    if note.user_id != current_user.id:
-        flash('You are not authorized to view this note.', 'danger')
-        abort(403)
-
-    delete_form = DeleteNoteForm()
-    return render_template('view_note.html', note=note, form=delete_form)
-
-
 @main.route('/edit_note/<int:note_id>', methods=['GET', 'POST'])
-@limiter.limit("4 per minute")
+@limiter.limit('4 per minute')
 @login_required
 def edit_note(note_id):
     note = Note.query.get_or_404(note_id)
@@ -209,7 +196,7 @@ def edit_note(note_id):
                 )
 
             flash('Note updated successfully!', 'success')
-            log_action(current_user.id, f"Mengedit catatan: {note.title}")
+            log_action(current_user.id, f'Mengedit catatan: {note.title}')
 
             return redirect(url_for('main.home'))
         else:
@@ -220,7 +207,7 @@ def edit_note(note_id):
 
 
 @main.route('/delete_note/<int:note_id>', methods=['POST'])
-@limiter.limit("8 per minute")
+@limiter.limit('8 per minute')
 @login_required
 def delete_note(note_id):
     form = DeleteNoteForm()
@@ -232,7 +219,7 @@ def delete_note(note_id):
 
         db.session.delete(note)
         db.session.commit()
-        log_action(current_user.id, f"Menghapus catatan: {note.title}")
+        log_action(current_user.id, f'Menghapus catatan: {note.title}')
         # flash('Note deleted successfully!', 'success')
         return redirect(url_for('main.home'))
     else:
