@@ -152,6 +152,16 @@ def create_note():
 
     return render_template('notes_editor.html', form=form)
 
+@main.route('/note/<int:note_id>')
+@login_required
+def view_note(note_id):
+    note = Note.query.get_or_404(note_id)
+    if note.user_id != current_user.id:
+        flash('You are not authorized to view this note.', 'danger')
+        abort(403)
+
+    delete_form = DeleteNoteForm()
+    return render_template('view_note.html', note=note, form=delete_form)
 
 @main.route('/edit_note/<int:note_id>', methods=['GET', 'POST'])
 @limiter.limit('4 per minute')
