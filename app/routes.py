@@ -10,10 +10,11 @@ from flask import (
 )
 from app.forms import LoginForm, NoteForm, RegistrationForm, DeleteNoteForm
 from app.models import User, Note
-from app import db
+from app import db, limiter
 from flask_login import current_user, login_user, logout_user, login_required
 
 main = Blueprint('main', __name__)
+
 
 
 @main.route('/')
@@ -24,6 +25,7 @@ def landing_page():
 
 
 @main.route('/register', methods=['GET', 'POST'])
+@limiter.limit("8 per minute")
 def register():
     if current_user.is_authenticated:
         return redirect(url_for('main.home'))
@@ -52,12 +54,13 @@ def register():
             flash('Registration successful! Please log in.', 'success')
             return redirect(url_for('main.login'))
         else:
-            flash('Invalid form submission. Please try again.', 'danger')
+            limiter.reset()
 
     return render_template('register.html', form=form)
 
 
 @main.route('/login', methods=['GET', 'POST'])
+@limiter.limit("8 per minute")
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('main.home'))
@@ -82,12 +85,13 @@ def login():
             # flash('Login successful!', 'success')
             return redirect(url_for('main.home'))
         else:
-            flash('Invalid form submission. Please try again.', 'danger')
+            limiter.reset()
 
     return render_template('login.html', form=form)
 
 
 @main.route('/logout')
+@limiter.limit("2 per minute")
 @login_required
 def logout():
     logout_user()
@@ -104,6 +108,7 @@ def home():
 
 
 @main.route('/create_note', methods=['GET', 'POST'])
+@limiter.limit("4 per minute")
 @login_required
 def create_note():
     form = NoteForm()
@@ -141,6 +146,7 @@ def create_note():
             return redirect(url_for('main.home'))
         else:
             flash('Error creating note. Please try again.', 'danger')
+            limiter.reset()
 
     return render_template('notes_editor.html', form=form)
 
@@ -158,6 +164,7 @@ def view_note(note_id):
 
 
 @main.route('/edit_note/<int:note_id>', methods=['GET', 'POST'])
+@limiter.limit("4 per minute")
 @login_required
 def edit_note(note_id):
     note = Note.query.get_or_404(note_id)
@@ -200,11 +207,15 @@ def edit_note(note_id):
 
             flash('Note updated successfully!', 'success')
             return redirect(url_for('main.home'))
+        else:
+            flash('Error updating note. Please try again.', 'danger')
+            limiter.reset()
 
     return render_template('notes_editor.html', note=note, form=form)
 
 
 @main.route('/delete_note/<int:note_id>', methods=['POST'])
+@limiter.limit("8 per minute")
 @login_required
 def delete_note(note_id):
     form = DeleteNoteForm()
@@ -219,5 +230,7 @@ def delete_note(note_id):
         # flash('Note deleted successfully!', 'success')
         return redirect(url_for('main.home'))
     else:
-        flash('CSRF validation failed. Please try again.', 'danger')
-        return redirect(url_for('main.home'))
+        flash('Invalid form submission. Please try again.', 'danger')
+        limiter.reset()
+
+    return redirect(url_for('main.home'))
