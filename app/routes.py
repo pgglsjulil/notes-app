@@ -8,11 +8,10 @@ from flask import (
     jsonify,
     abort,
 )
-from app.forms import LoginForm, NoteForm, RegistrationForm
+from app.forms import LoginForm, NoteForm, RegistrationForm, DeleteNoteForm
 from app.models import User, Note
 from app import db
 from flask_login import current_user, login_user, logout_user, login_required
-from werkzeug.security import generate_password_hash, check_password_hash
 
 main = Blueprint('main', __name__)
 
@@ -52,6 +51,8 @@ def register():
 
             flash('Registration successful! Please log in.', 'success')
             return redirect(url_for('main.login'))
+        else:
+            flash('Invalid form submission. Please try again.', 'danger')
 
     return render_template('register.html', form=form)
 
@@ -80,6 +81,8 @@ def login():
             login_user(user)
             # flash('Login successful!', 'success')
             return redirect(url_for('main.home'))
+        else:
+            flash('Invalid form submission. Please try again.', 'danger')
 
     return render_template('login.html', form=form)
 
@@ -95,8 +98,9 @@ def logout():
 @main.route('/home', methods=['GET'])
 @login_required
 def home():
+    delete_form = DeleteNoteForm()
     user_notes = current_user.notes.order_by(Note.date_created.desc()).all()
-    return render_template('home.html', notes=user_notes)
+    return render_template('home.html', notes=user_notes, form=delete_form)
 
 
 @main.route('/create_note', methods=['GET', 'POST'])
@@ -135,6 +139,8 @@ def create_note():
 
             # flash('Note created successfully!', 'success')
             return redirect(url_for('main.home'))
+        else:
+            flash('Error creating note. Please try again.', 'danger')
 
     return render_template('notes_editor.html', form=form)
 
@@ -147,7 +153,8 @@ def view_note(note_id):
         flash('You are not authorized to view this note.', 'danger')
         abort(403)
 
-    return render_template('view_note.html', note=note)
+    delete_form = DeleteNoteForm()
+    return render_template('view_note.html', note=note, form=delete_form)
 
 
 @main.route('/edit_note/<int:note_id>', methods=['GET', 'POST'])
@@ -200,12 +207,17 @@ def edit_note(note_id):
 @main.route('/delete_note/<int:note_id>', methods=['POST'])
 @login_required
 def delete_note(note_id):
-    note = Note.query.get_or_404(note_id)
-    if note.user_id != current_user.id:
-        flash('You are not authorized to delete this note.', 'danger')
-        abort(403)
+    form = DeleteNoteForm()
+    if form.validate_on_submit():
+        note = Note.query.get_or_404(note_id)
+        if note.user_id != current_user.id:
+            flash('You are not authorized to delete this note.', 'danger')
+            abort(403)
 
-    db.session.delete(note)
-    db.session.commit()
-    # flash('Note deleted successfully!', 'success')
-    return redirect(url_for('main.home'))
+        db.session.delete(note)
+        db.session.commit()
+        # flash('Note deleted successfully!', 'success')
+        return redirect(url_for('main.home'))
+    else:
+        flash('CSRF validation failed. Please try again.', 'danger')
+        return redirect(url_for('main.home'))

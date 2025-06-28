@@ -1260,23 +1260,28 @@ body::before {
     }
 }
 
-.alert {
-    padding: 15px;
-    border-radius: 8px;
+.flash-messages {
     color: white;
     font-weight: bold;
-    transition: opacity 0.3s ease;
 }
 
-.alert-success {
+.flash-message {
+    background-color: #34495e;
+    padding: 12px 18px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.flash-message.success {
     background-color: #2ecc71;
 }
 
-.alert-danger {
+.flash-message.danger {
     background-color: #e74c3c;
 }
 
-.alert-warning {
+.flash-message.warning {
     background-color: #f1c40f;
 }
 

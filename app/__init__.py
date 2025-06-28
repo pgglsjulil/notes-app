@@ -14,8 +14,8 @@ def create_app():
     db.init_app(app)
     login_manager.init_app(app)
     login_manager.login_view = 'main.login' 
-    login_manager.login_message = "Harap login untuk mengakses halaman ini."
-    login_manager.login_message_category = "info"
+    login_manager.login_message = "You must be logged in to access this page."
+    login_manager.login_message_category = "danger"
 
     csrf.init_app(app)
 
