@@ -1,7 +1,7 @@
 from app import db
 from flask_login import UserMixin
 from datetime import datetime
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash\
 
 
 class User(UserMixin, db.Model):
@@ -31,3 +31,15 @@ class Note(db.Model):
 
     def __repr__(self):
         return f'<Note {self.title}>'
+
+class UserLog(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer)
+    action = db.Column(db.String(255))
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+
+def log_action(user_id, action):
+    from app.models import db, UserLog
+    log = UserLog(user_id=user_id, action=action)
+    db.session.add(log)
+    db.session.commit()

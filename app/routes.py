@@ -9,7 +9,7 @@ from flask import (
     abort,
 )
 from app.forms import LoginForm, NoteForm, RegistrationForm, DeleteNoteForm
-from app.models import User, Note
+from app.models import User, Note, log_action
 from app import db, limiter
 from flask_login import current_user, login_user, logout_user, login_required
 
@@ -82,6 +82,7 @@ def login():
                 return redirect(url_for('main.login'))
 
             login_user(user)
+            log_action(user.id, "Login berhasil")
             # flash('Login successful!', 'success')
             return redirect(url_for('main.home'))
         else:
@@ -94,6 +95,7 @@ def login():
 @limiter.limit("2 per minute")
 @login_required
 def logout():
+    log_action(current_user.id, "Logout")
     logout_user()
     # flash('You have been logged out.', 'info')
     return redirect(url_for('main.landing_page'))
@@ -131,6 +133,7 @@ def create_note():
 
             new_note = Note(title=title, content=content, author=current_user)
             db.session.add(new_note)
+            log_action(current_user.id, f"Menambahkan catatan: {title}")
             db.session.commit()
 
             if request.headers.get('X-Requested-With') == 'XMLHttpRequest':
@@ -206,6 +209,8 @@ def edit_note(note_id):
                 )
 
             flash('Note updated successfully!', 'success')
+            log_action(current_user.id, f"Mengedit catatan: {note.title}")
+
             return redirect(url_for('main.home'))
         else:
             flash('Error updating note. Please try again.', 'danger')
@@ -227,6 +232,7 @@ def delete_note(note_id):
 
         db.session.delete(note)
         db.session.commit()
+        log_action(current_user.id, f"Menghapus catatan: {note.title}")
         # flash('Note deleted successfully!', 'success')
         return redirect(url_for('main.home'))
     else:

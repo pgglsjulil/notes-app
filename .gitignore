@@ -19,3 +19,7 @@ venv.bak/
 
 # Database
 instance/notes.db
+
+# Python
+__pycache__/
+*.pyc
